@@ -12,7 +12,8 @@
     "react-scripts-ts": "3.1.0",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
-    "typeface-roboto": "^0.0.54"
+    "typeface-roboto": "^0.0.54",
+    "typesafe-actions": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",
