@@ -81,10 +81,16 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{ts,tsx}": [
       "prettier --write",
        "npm run lint",
        "git add"
     ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 4,
+    "jsxSingleQuote": true,
+    "trailingComma": "none"
   }
 }
