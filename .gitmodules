@@ -1,0 +1,3 @@
+[submodule "Blob-Uploader"]
+	path = Blob-Uploader
+	url = https://github.com/YTakahashii/Blob-Uploader.git
