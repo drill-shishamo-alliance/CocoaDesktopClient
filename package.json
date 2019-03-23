@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/redux": "^3.6.0",
+    "@types/redux-saga": "^0.10.5",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts-ts": "3.1.0",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -83,8 +87,8 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --write",
-       "npm run lint",
-       "git add"
+      "npm run lint",
+      "git add"
     ]
   },
   "prettier": {
