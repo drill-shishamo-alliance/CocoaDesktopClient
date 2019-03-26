@@ -1,0 +1,20 @@
+jobs:
+- job: Windows
+
+  pool:
+    vmImage: 'vs2017-win2016'
+
+  strategy:
+    matrix:
+      node_10_x:
+        node_version: 10.x
+  steps:
+  - script: |
+      yarn
+    displayName: 'node moduleをインストール'
+  - script: |
+      yarn test
+    displayName: 'テスト'
+  - script: |
+      yarn build
+    displayName: 'ビルド'
