@@ -1,9 +1,9 @@
-import ScreenState, { ScreenType } from 'src/models/states/ScreenState';
-import ScreenAction from 'src/actions/Screen/ScreenAction';
+import ScreenState, { ScreenType } from '../../models/states/ScreenState';
+import ScreenAction from '../../actions/Screen/ScreenAction';
 import ScreenActionType from '../../actions/Screen/ScreenActionType';
 import { FeelingType } from '../../models/states/FeelingState';
 
-const initialState: ScreenState = {
+export const initialState: ScreenState = {
     screenType: ScreenType.INPUT_FEELING,
     feelingType: FeelingType.NORMAL
 };
