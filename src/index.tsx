@@ -4,11 +4,21 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-import ReduxLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import App from './containers/App/App';
+import { createLogger } from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, applyMiddleware(ReduxLogger));
+const composeEnhancers = composeWithDevTools({
+    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
+
+const logger = createLogger();
+const middleware = [logger];
+const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(...middleware))
+);
 
 ReactDOM.render(
     <Provider store={store}>
