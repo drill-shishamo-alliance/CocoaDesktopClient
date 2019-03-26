@@ -13,7 +13,7 @@ jobs:
       yarn
     displayName: 'node moduleをインストール'
   - script: |
-      yarn test
+      yarn test:ci
     displayName: 'テスト'
   - script: |
       yarn build
