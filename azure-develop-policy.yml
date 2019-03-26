@@ -15,3 +15,6 @@ jobs:
   - script: |
       yarn test
     displayName: 'テスト'
+  - script: |
+      yarn build
+    displayName: 'ビルド'
