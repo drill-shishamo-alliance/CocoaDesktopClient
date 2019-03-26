@@ -16,18 +16,22 @@ class InputFeeling extends React.Component<InputFeelingProps> {
         return (
             <React.Fragment>
                 <Typography variant='h4'>今日の気分はどうですか？</Typography>
-                <div className={classes.root}>
+                <div className={classes.root} aria-label='root'>
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
-                            aria-label='Delete'
+                            aria-label='very-dissatisfied-button'
                         >
                             <VeryDissatisfiedIcon
                                 className={classes.icon}
                                 fontSize='large'
                             />
                         </IconButton>
-                        <Typography variant='h6' className={classes.detailText}>
+                        <Typography
+                            variant='h6'
+                            className={classes.detailText}
+                            aria-label='very-dissatisfied-text'
+                        >
                             最悪
                         </Typography>
                     </div>
@@ -35,11 +39,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
-                            aria-label='Delete'
+                            aria-label='dissatisfied-button'
                         >
                             <DissatisfiedIcon className={classes.icon} />
                         </IconButton>
-                        <Typography variant='h6' className={classes.detailText}>
+                        <Typography
+                            variant='h6'
+                            className={classes.detailText}
+                            aria-label='dissatisfied-text'
+                        >
                             悪い
                         </Typography>
                     </div>
@@ -47,11 +55,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
-                            aria-label='Delete'
+                            aria-label='normal-button'
                         >
                             <FaceIcon className={classes.icon} />
                         </IconButton>
-                        <Typography variant='h6' className={classes.detailText}>
+                        <Typography
+                            variant='h6'
+                            className={classes.detailText}
+                            aria-label='normal-text'
+                        >
                             普通
                         </Typography>
                     </div>
@@ -59,11 +71,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
-                            aria-label='Delete'
+                            aria-label='satisfied-button'
                         >
                             <SatisfiedIcon className={classes.icon} />
                         </IconButton>
-                        <Typography variant='h6' className={classes.detailText}>
+                        <Typography
+                            variant='h6'
+                            className={classes.detailText}
+                            aria-label='satisfied-text'
+                        >
                             良い
                         </Typography>
                     </div>
@@ -71,11 +87,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
-                            aria-label='Delete'
+                            aria-label='very-satisfied-button'
                         >
                             <VerySatisfiedIcon className={classes.icon} />
                         </IconButton>
-                        <Typography variant='h6' className={classes.detailText}>
+                        <Typography
+                            variant='h6'
+                            className={classes.detailText}
+                            aria-label='very-satisfied-text'
+                        >
                             最高
                         </Typography>
                     </div>
