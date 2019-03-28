@@ -9,8 +9,16 @@ import FaceIcon from '@material-ui/icons/Face';
 import Typography from '@material-ui/core/Typography';
 import InputFeelingProps from './InputFeelingProps';
 import styles from './InputFeelingStyles';
+import { FeelingType } from '../../models/states/FeelingState';
 
 class InputFeeling extends React.Component<InputFeelingProps> {
+    public handleClick = (feelingType: FeelingType) => (
+        e: React.MouseEvent<HTMLElement, MouseEvent>
+    ) => {
+        const { switchInputCauseOfFeeling } = this.props;
+        switchInputCauseOfFeeling(feelingType);
+    };
+
     public render() {
         const { classes } = this.props;
         return (
@@ -21,6 +29,9 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         <IconButton
                             className={classes.button}
                             aria-label='very-dissatisfied-button'
+                            onClick={this.handleClick(
+                                FeelingType.VERY_DISSATISFIED
+                            )}
                         >
                             <VeryDissatisfiedIcon
                                 className={classes.icon}
@@ -40,6 +51,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         <IconButton
                             className={classes.button}
                             aria-label='dissatisfied-button'
+                            onClick={this.handleClick(FeelingType.DISSATISFIED)}
                         >
                             <DissatisfiedIcon className={classes.icon} />
                         </IconButton>
@@ -56,6 +68,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         <IconButton
                             className={classes.button}
                             aria-label='normal-button'
+                            onClick={this.handleClick(FeelingType.NORMAL)}
                         >
                             <FaceIcon className={classes.icon} />
                         </IconButton>
@@ -72,6 +85,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         <IconButton
                             className={classes.button}
                             aria-label='satisfied-button'
+                            onClick={this.handleClick(FeelingType.SATISFIED)}
                         >
                             <SatisfiedIcon className={classes.icon} />
                         </IconButton>
@@ -88,6 +102,9 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         <IconButton
                             className={classes.button}
                             aria-label='very-satisfied-button'
+                            onClick={this.handleClick(
+                                FeelingType.VERY_SATISFIED
+                            )}
                         >
                             <VerySatisfiedIcon className={classes.icon} />
                         </IconButton>

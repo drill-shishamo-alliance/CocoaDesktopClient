@@ -5,12 +5,16 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "@types/react-redux": "^7.0.5",
     "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.7",
     "@types/redux-saga": "^0.10.5",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-redux": "^6.0.1",
     "react-scripts-ts": "3.1.0",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
     "typeface-roboto": "^0.0.54",
     "typesafe-actions": "^3.2.1"
@@ -19,6 +23,7 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
+    "test:ci": "CI=true react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "electron": "node_modules/.bin/electron .",
     "dev": "nf start -p 3000",
@@ -43,6 +48,7 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
     "react-testing-library": "^6.0.2",
+    "redux-devtools-extension": "^2.13.8",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.3.4000"

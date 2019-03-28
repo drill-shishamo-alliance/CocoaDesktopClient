@@ -1,8 +1,8 @@
 jobs:
-- job: Windows
+- job: Ubuntu
 
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'ubuntu-16.04'
 
   strategy:
     matrix:
@@ -13,7 +13,7 @@ jobs:
       yarn
     displayName: 'node moduleをインストール'
   - script: |
-      yarn test
+      yarn test:ci
     displayName: 'テスト'
   - script: |
       yarn build

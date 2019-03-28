@@ -14,7 +14,8 @@
     "member-ordering": true,
     "strict-boolean-expressions": false,
     "jsx-boolean-value": false,
-    "interface-name": false
+    "interface-name": false,
+    "interface-over-type-literal": false
   },
   "jsRules": {
     "no-console": false
