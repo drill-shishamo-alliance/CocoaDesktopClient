@@ -1,8 +1,8 @@
 jobs:
-- job: Windows
+- job: Ubuntu
 
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'ubuntu-16.04'
 
   strategy:
     matrix:
