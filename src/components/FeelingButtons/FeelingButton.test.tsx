@@ -86,41 +86,41 @@ describe('FeelingButton', () => {
             });
 
             describe('handleClickの有無によるUIの変化', () => {
-                test('handleClickがPropsで渡された場合、disabled=false');
-                const { getByLabelText } = render(
-                    <FeelingButton
-                        feelingType={FeelingType.VERY_SATISFIED}
-                        handleClick={handleClickSpy}
-                    />
-                );
+                test('handleClickがPropsで渡された場合、disabled=false', () => {
+                    const { getByLabelText } = render(
+                        <FeelingButton
+                            feelingType={FeelingType.VERY_SATISFIED}
+                            handleClick={handleClickSpy}
+                        />
+                    );
+                    const button = getByLabelText(
+                        'very-satisfied-button'
+                    ) as HTMLButtonElement;
 
-                const button = getByLabelText(
-                    'very-satisfied-button'
-                ) as HTMLButtonElement;
+                    // IconButtonのdisabledがFalse
+                    expect(button.disabled).toBeFalsy();
+                });
 
-                // IconButtonのdisabledがFalse
-                // expect(button.style.).toBeFalsy()
-            });
+                test('handleClickがPropsで渡されなかった場合、disabled=true', () => {
+                    const { getByLabelText } = render(
+                        <FeelingButton
+                            feelingType={FeelingType.VERY_SATISFIED}
+                        />
+                    );
+                    const button = getByLabelText(
+                        'very-satisfied-button'
+                    ) as HTMLButtonElement;
 
-            test('handleClickがPropsで渡されなかった場合、disabled=true', () => {
-                const { getByLabelText } = render(
-                    <FeelingButton feelingType={FeelingType.VERY_SATISFIED} />
-                );
-
-                const button = getByLabelText(
-                    'very-satisfied-button'
-                ) as HTMLButtonElement;
-
-                // IconButtonのdisabledがTrue
-                // expect(button.style.disa)
+                    // IconButtonのdisabledがTrue
+                    expect(button.disabled).toBeTruthy();
+                });
             });
         });
     });
 
     describe('Integration', () => {
-        // 各ボタンごとに発火
-        describe('正しい引数でhandleClickが発火する', () => {
-            test('最悪ボタン', () => {
+        describe('ボタンを押したとき', () => {
+            test('親から受け取ったfeelingTypeがhandleClickの引数に設定される', () => {
                 const feelingType: FeelingType = FeelingType.VERY_DISSATISFIED;
                 const { getByLabelText } = render(
                     <FeelingButton
