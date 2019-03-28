@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, cleanup, fireEvent } from 'react-testing-library';
 import InputFeeling from './InputFeeling';
-import { FeelingType } from '../../models/states/FeelingState';
+import { FeelingType } from 'src/models/states/FeelingState';
 
 // テストを実行するたびに初期化
 afterEach(cleanup);
