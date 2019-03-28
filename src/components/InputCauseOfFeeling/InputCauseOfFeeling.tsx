@@ -11,14 +11,18 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './InputCauseOfFeelingStyles';
 import * as classnames from 'classnames';
+import FeelingButton from '../FeelingButtons/FeelingButton';
 
 class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
     public render() {
         const { classes, selectedFeelingType } = this.props;
         return (
-            <React.Fragment>
-                <Typography variant='h4'>{`${selectedFeelingType}の原因は何ですか？`}</Typography>
-                <div className={classes.root} aria-label='root'>
+            <div className={classes.root}>
+                <div className={classes.questionContainer}>
+                    <FeelingButton feelingType={selectedFeelingType} />
+                    <Typography variant='h4'>{`の原因は何ですか？`}</Typography>
+                </div>
+                <div className={classes.butttons} aria-label='butttons'>
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
@@ -37,6 +41,7 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                             仕事量
                         </Typography>
                     </div>
+
                     <div className={classes.buttonContainer}>
                         <IconButton
                             className={classes.button}
@@ -130,7 +135,7 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                         </Typography>
                     </div>
                 </div>
-            </React.Fragment>
+            </div>
         );
     }
 }
