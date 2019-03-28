@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import ScreenState, { ScreenType } from './models/states/ScreenState';
-import InputCauseOfFeeling from './components/InputCauseOfFeeling/InputCauseOfFeeling';
+import InputCauseOfFeeling from './containers/InputCauseOfFeeling/InputCauseOfFeeling';
 import InputFeeling from './containers/InputFeeling/InputFeeling';
 
 export interface AppConnectedProps {
