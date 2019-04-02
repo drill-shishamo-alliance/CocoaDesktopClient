@@ -13,6 +13,11 @@ import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton'
 import { CauseOfFeelingType } from 'src/models/states/CauseOfFeelingState';
 
 class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
+    public handleClick = () => {
+        const { switchInputFeeling } = this.props;
+        switchInputFeeling();
+    };
+
     public render() {
         const { classes, selectedFeelingType } = this.props;
         return (
@@ -21,6 +26,7 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                     <IconButton
                         className={classes.button}
                         aria-label='back-button'
+                        onClick={this.handleClick}
                     >
                         <BackIcon
                             className={classnames(

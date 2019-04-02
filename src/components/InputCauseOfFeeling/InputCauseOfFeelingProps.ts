@@ -6,7 +6,12 @@ export type InputCauseOfFeelingConnectedProps = {
     selectedFeelingType: FeelingType;
 };
 
+export type InputCauseOfFeelingDispatchProps = {
+    switchInputFeeling: () => void;
+};
+
 type InputCauseOfFeelingProps = WithStyles<typeof styles> &
+    InputCauseOfFeelingDispatchProps &
     InputCauseOfFeelingConnectedProps;
 
 export default InputCauseOfFeelingProps;
