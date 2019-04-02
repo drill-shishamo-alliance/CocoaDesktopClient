@@ -40,7 +40,12 @@ const styles = (theme: Theme) =>
         },
         sendButton: {
             color: '#4B4B4B',
-            width: '250px'
+            width: 250,
+            height: 30
+        },
+        backIcon: {
+            width: 32,
+            height: 32
         }
     });
 

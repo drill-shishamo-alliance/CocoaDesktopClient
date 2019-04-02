@@ -17,20 +17,18 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
         const { classes, selectedFeelingType } = this.props;
         return (
             <div className={classes.root}>
-                <div>
+                <div className={classes.questionContainer}>
                     <IconButton
                         className={classes.button}
                         aria-label='back-button'
                     >
                         <BackIcon
                             className={classnames(
-                                classes.icon,
+                                classes.backIcon,
                                 classes.IconColor
                             )}
                         />
                     </IconButton>
-                </div>
-                <div className={classes.questionContainer}>
                     <FeelingButton feelingType={selectedFeelingType} />
                     <Typography variant='h4'>{`の原因は何ですか？`}</Typography>
                 </div>
