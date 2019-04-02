@@ -19,12 +19,6 @@ const styles = (theme: Theme) =>
             display: 'flex',
             justifyContent: 'space-around'
         },
-        buttonContainer: {
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center' /* 子要素をflexboxにより中央に配置する */,
-            alignItems: 'center' /* 子要素をflexboxにより中央に配置する */
-        },
         button: {
             marginTop: theme.spacing.unit,
             marginLeft: 1,
@@ -35,10 +29,7 @@ const styles = (theme: Theme) =>
             width: 64,
             height: 64
         },
-        detailText: {
-            marginTop: 0
-        },
-        evaluationIconColor: {
+        IconColor: {
             color: '#4B4B4B'
         },
         questionContainer: {
@@ -46,6 +37,10 @@ const styles = (theme: Theme) =>
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center'
+        },
+        sendButton: {
+            color: '#4B4B4B',
+            width: '250px'
         }
     });
 
