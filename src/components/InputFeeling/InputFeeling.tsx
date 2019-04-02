@@ -19,12 +19,12 @@ class InputFeeling extends React.Component<InputFeelingProps> {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
-                <Typography variant='h4' className={''}>
+                <Typography variant='h4' aria-label='question'>
                     今日の気分はどうですか？
                 </Typography>
                 <div
                     className={classNames(classes.butttons, 'App')}
-                    aria-label='root'
+                    aria-label='buttons'
                 >
                     <FeelingButton
                         feelingType={FeelingType.VERY_DISSATISFIED}
