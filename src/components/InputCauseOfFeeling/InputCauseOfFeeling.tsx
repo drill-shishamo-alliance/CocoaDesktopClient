@@ -4,14 +4,14 @@ import InputCauseOfFeelingProps from './InputCauseOfFeelingProps';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './InputCauseOfFeelingStyles';
-import * as classnames from 'classnames';
+import * as classNames from 'classnames';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton';
 import { CauseOfFeelingType } from 'src/models/states/CauseOfFeelingState';
-
+import 'src/utils/webkit_properties/webkit_properties.css';
 class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
     public handleClick = () => {
         const { switchInputFeeling } = this.props;
@@ -21,26 +21,23 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
     public render() {
         const { classes, selectedFeelingType } = this.props;
         return (
-            <div className={classes.root}>
+            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+                <div aria-label='back-button'>
+                    <IconButton
+                        className={classes.backButton}
+                        onClick={this.handleClick}
+                    >
+                        <BackIcon className={classes.backIcon} />
+                    </IconButton>
+                </div>
                 <div className={classes.questionContainer}>
-                    <span aria-label='back-button'>
-                        <IconButton
-                            className={classes.button}
-                            onClick={this.handleClick}
-                        >
-                            <BackIcon className={classes.backIcon} />
-                        </IconButton>
-                    </span>
                     <FeelingButton feelingType={selectedFeelingType} />
                     <Typography
                         variant='h4'
                         aria-label='question'
                     >{`の原因は何ですか？`}</Typography>
                 </div>
-                <div
-                    className={classnames(classes.buttons, 'App')}
-                    aria-label='buttons'
-                >
+                <div className={classes.buttons} aria-label='buttons'>
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.AMOUNT_OF_WORK}
                     />
@@ -63,7 +60,7 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                 <div aria-label='send-button'>
                     <Button
                         variant='contained'
-                        className={classnames(
+                        className={classNames(
                             classes.button,
                             classes.sendButton
                         )}

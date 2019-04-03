@@ -6,7 +6,7 @@ import styles from './InputFeelingStyles';
 import { FeelingType } from '../../models/states/FeelingState';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import * as classNames from 'classnames';
-import 'src/App.css';
+import 'src/utils/webkit_properties/webkit_properties.css';
 class InputFeeling extends React.Component<InputFeelingProps> {
     public handleClick = (feelingType: FeelingType) => (
         e: React.MouseEvent<HTMLElement, MouseEvent>
@@ -18,12 +18,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
     public render() {
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
+            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
                 <Typography variant='h4' aria-label='question'>
                     今日の気分はどうですか？
                 </Typography>
                 <div
-                    className={classNames(classes.butttons, 'App')}
+                    className={classNames(
+                        classes.buttons,
+                        'WebkitAppRegionDrag'
+                    )}
                     aria-label='buttons'
                 >
                     <FeelingButton
