@@ -118,12 +118,11 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
 
     return (
         <div className={classes.buttonContainer}>
-            <IconButton
-                className={classes.button}
-                aria-label={causeOfFeelingButtonProps.ariaLabel}
-            >
-                {causeOfFeelingButtonProps.IconComponent}
-            </IconButton>
+            <div aria-label={causeOfFeelingButtonProps.ariaLabel}>
+                <IconButton className={classes.button}>
+                    {causeOfFeelingButtonProps.IconComponent}
+                </IconButton>
+            </div>
             <Typography
                 variant='h6'
                 className={classes.detailText}

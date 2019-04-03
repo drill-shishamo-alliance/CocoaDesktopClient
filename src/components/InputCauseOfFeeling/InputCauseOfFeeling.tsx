@@ -23,13 +23,14 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
         return (
             <div className={classes.root}>
                 <div className={classes.questionContainer}>
-                    <IconButton
-                        className={classes.button}
-                        aria-label='back-button'
-                        onClick={this.handleClick}
-                    >
-                        <BackIcon className={classes.backIcon} />
-                    </IconButton>
+                    <span aria-label='back-button'>
+                        <IconButton
+                            className={classes.button}
+                            onClick={this.handleClick}
+                        >
+                            <BackIcon className={classes.backIcon} />
+                        </IconButton>
+                    </span>
                     <FeelingButton feelingType={selectedFeelingType} />
                     <Typography
                         variant='h4'
@@ -59,14 +60,18 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                         causeOfFeelingType={CauseOfFeelingType.HOLIDAY_WORK}
                     />
                 </div>
-                <Button
-                    variant='contained'
-                    className={classnames(classes.button, classes.sendButton)}
-                    aria-label='send-button'
-                >
-                    Send
-                    <Icon>send</Icon>
-                </Button>
+                <div aria-label='send-button'>
+                    <Button
+                        variant='contained'
+                        className={classnames(
+                            classes.button,
+                            classes.sendButton
+                        )}
+                    >
+                        Send
+                        <Icon>send</Icon>
+                    </Button>
+                </div>
             </div>
         );
     }
