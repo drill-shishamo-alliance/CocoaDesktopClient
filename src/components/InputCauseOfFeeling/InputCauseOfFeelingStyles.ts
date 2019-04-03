@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
             textAlign: 'center',
             width: '100%'
         },
-        butttons: {
+        buttons: {
             display: 'flex',
             justifyContent: 'space-around'
         },

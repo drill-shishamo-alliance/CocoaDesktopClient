@@ -36,40 +36,33 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                         />
                     </IconButton>
                     <FeelingButton feelingType={selectedFeelingType} />
-                    <Typography variant='h4'>{`の原因は何ですか？`}</Typography>
+                    <Typography
+                        variant='h4'
+                        aria-label='question'
+                    >{`の原因は何ですか？`}</Typography>
                 </div>
-                <div className={classes.butttons} aria-label='butttons'>
-                    <div
-                        className={classnames(classes.butttons, 'App')}
-                        aria-label='root'
-                    >
-                        <CauseOfFeelingButton
-                            causeOfFeelingType={
-                                CauseOfFeelingType.AMOUNT_OF_WORK
-                            }
-                        />
-                        <CauseOfFeelingButton
-                            causeOfFeelingType={
-                                CauseOfFeelingType.JOB_DESCRIPTION
-                            }
-                        />
-                        <CauseOfFeelingButton
-                            causeOfFeelingType={
-                                CauseOfFeelingType.HUMAN_RELATION
-                            }
-                        />
-                        <CauseOfFeelingButton
-                            causeOfFeelingType={CauseOfFeelingType.EVALUATION}
-                        />
-                        <CauseOfFeelingButton
-                            causeOfFeelingType={
-                                CauseOfFeelingType.OVERTIME_WORK
-                            }
-                        />
-                        <CauseOfFeelingButton
-                            causeOfFeelingType={CauseOfFeelingType.HOLIDAY_WORK}
-                        />
-                    </div>
+                <div
+                    className={classnames(classes.buttons, 'App')}
+                    aria-label='buttons'
+                >
+                    <CauseOfFeelingButton
+                        causeOfFeelingType={CauseOfFeelingType.AMOUNT_OF_WORK}
+                    />
+                    <CauseOfFeelingButton
+                        causeOfFeelingType={CauseOfFeelingType.JOB_DESCRIPTION}
+                    />
+                    <CauseOfFeelingButton
+                        causeOfFeelingType={CauseOfFeelingType.HUMAN_RELATION}
+                    />
+                    <CauseOfFeelingButton
+                        causeOfFeelingType={CauseOfFeelingType.EVALUATION}
+                    />
+                    <CauseOfFeelingButton
+                        causeOfFeelingType={CauseOfFeelingType.OVERTIME_WORK}
+                    />
+                    <CauseOfFeelingButton
+                        causeOfFeelingType={CauseOfFeelingType.HOLIDAY_WORK}
+                    />
                 </div>
                 <Button
                     variant='contained'
