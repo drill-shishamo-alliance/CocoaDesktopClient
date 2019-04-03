@@ -28,12 +28,7 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                         aria-label='back-button'
                         onClick={this.handleClick}
                     >
-                        <BackIcon
-                            className={classnames(
-                                classes.backIcon,
-                                classes.IconColor
-                            )}
-                        />
+                        <BackIcon className={classes.backIcon} />
                     </IconButton>
                     <FeelingButton feelingType={selectedFeelingType} />
                     <Typography
@@ -67,6 +62,7 @@ class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
                 <Button
                     variant='contained'
                     className={classnames(classes.button, classes.sendButton)}
+                    aria-label='send-button'
                 >
                     Send
                     <Icon>send</Icon>

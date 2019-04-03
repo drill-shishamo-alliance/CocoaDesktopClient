@@ -44,6 +44,7 @@ const styles = (theme: Theme) =>
             height: 30
         },
         backIcon: {
+            color: '#4B4B4B',
             width: 32,
             height: 32
         }
