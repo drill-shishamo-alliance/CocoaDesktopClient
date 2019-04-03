@@ -37,10 +37,12 @@
     "lint": "tslint -p tsconfig.json --fix"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.11.6",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.3",
+    "classnames": "^2.2.6",
     "electron": "^4.1.1",
     "electron-builder": "^20.39.0",
     "foreman": "^3.0.1",

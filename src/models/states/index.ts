@@ -1,5 +1,6 @@
-import ScreenState from './ScreenState';
+import { StateType } from 'typesafe-actions';
+import rootReducer from 'src/reducers';
 
-export default interface RootState {
-    screenState: ScreenState;
-}
+type RootState = StateType<typeof rootReducer>;
+
+export default RootState;

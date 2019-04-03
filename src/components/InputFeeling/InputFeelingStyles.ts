@@ -4,24 +4,20 @@ const styles = (theme: Theme) =>
     createStyles({
         root: {
             display: 'flex',
-            justifyContent: 'space-around'
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            padding: '15px 30px',
+            textAlign: 'center',
+            width: '100%'
         },
-        buttonContainer: {
+        buttons: {
             display: 'flex',
-            flexDirection: 'column'
-        },
-        button: {
-            marginTop: theme.spacing.unit,
-            marginLeft: 1,
-            marginRight: 1,
-            marginBottom: 0
-        },
-        icon: {
-            width: 64,
-            height: 64
-        },
-        detailText: {
-            marginTop: 0
+            justifyContent: 'space-around'
         }
     });
 
