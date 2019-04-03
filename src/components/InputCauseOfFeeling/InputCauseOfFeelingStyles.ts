@@ -41,12 +41,20 @@ const styles = (theme: Theme) =>
         sendButton: {
             color: '#4B4B4B',
             width: 250,
-            height: 30
+            height: 37,
+            margin: theme.spacing.unit,
+            padding: theme.spacing.unit
         },
         backIcon: {
             color: '#4B4B4B',
             width: 32,
             height: 32
+        },
+        backButton: {
+            position: 'absolute',
+            top: 15,
+            left: 33,
+            margin: theme.spacing.unit
         }
     });
 
