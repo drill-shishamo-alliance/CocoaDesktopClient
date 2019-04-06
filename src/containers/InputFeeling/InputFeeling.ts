@@ -1,21 +1,29 @@
 import { Dispatch } from 'redux';
 import ScreenAction from '../../actions/Screen/ScreenAction';
-import { InputFeelingDispatchProps } from '../../components/InputFeeling/InputFeelingProps';
+import {
+    InputFeelingDispatchProps,
+    InputFeelingConnectedProps
+} from '../../components/InputFeeling/InputFeelingProps';
 import * as ScreenActionCreators from '../../actions/Screen/ScreenActionCreator';
-import { FeelingType } from '../../models/states/FeelingState';
+import FeelingState from '../../models/states/FeelingState';
 import { connect } from 'react-redux';
 import InputFeeling from '../../components/InputFeeling/InputFeeling';
+import RootState from 'src/models/states';
 
 const mapDispatchToProps = (
     dispatch: Dispatch<ScreenAction>
 ): InputFeelingDispatchProps => ({
-    switchInputCauseOfFeeling: (feelingType: FeelingType) =>
+    switchInputCauseOfFeeling: (feelingState: FeelingState) =>
         dispatch(
-            ScreenActionCreators.switchInputCauseOfFeelingScreen(feelingType)
+            ScreenActionCreators.switchInputCauseOfFeelingScreen(feelingState)
         )
 });
 
+const mapStateToProps = (state: RootState): InputFeelingConnectedProps => ({
+    feelingStates: state.feelingState
+});
+
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(InputFeeling);

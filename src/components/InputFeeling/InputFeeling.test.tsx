@@ -13,6 +13,7 @@ describe('InputFeeling', () => {
             const { getByLabelText } = render(
                 <InputFeeling
                     switchInputCauseOfFeeling={mockSwitchInputCauseOfFeeling}
+                    feelingStates={[]}
                 />
             );
 
@@ -25,6 +26,7 @@ describe('InputFeeling', () => {
             const { getByLabelText } = render(
                 <InputFeeling
                     switchInputCauseOfFeeling={mockSwitchInputCauseOfFeeling}
+                    feelingStates={[]}
                 />
             );
             const buttons = getByLabelText('buttons');

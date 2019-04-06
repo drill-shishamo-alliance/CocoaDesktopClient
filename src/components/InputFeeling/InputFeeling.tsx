@@ -11,8 +11,12 @@ class InputFeeling extends React.Component<InputFeelingProps> {
     public handleClick = (feelingType: FeelingType) => (
         e: React.MouseEvent<HTMLElement, MouseEvent>
     ) => {
-        const { switchInputCauseOfFeeling } = this.props;
-        switchInputCauseOfFeeling(feelingType);
+        const { switchInputCauseOfFeeling, feelingStates } = this.props;
+        const index = feelingStates.findIndex(
+            state => state.feelingType === feelingType
+        );
+
+        switchInputCauseOfFeeling(feelingStates[index]);
     };
 
     public render() {
