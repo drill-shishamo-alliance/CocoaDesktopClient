@@ -5,7 +5,11 @@ import { FeelingType } from '../../models/states/FeelingState';
 
 export const initialState: ScreenState = {
     screenType: ScreenType.INPUT_FEELING,
-    feelingType: FeelingType.NORMAL
+    feelingState: {
+        feelingId: 5,
+        feelingType: FeelingType.VERY_SATISFIED,
+        name: ''
+    }
 };
 
 const screenState = (
@@ -22,7 +26,7 @@ const screenState = (
             return {
                 ...state,
                 screenType: ScreenType.INPUT_CAUSE_OF_FEELING,
-                feelingType: action.payload
+                feelingState: action.payload
             };
         default:
             return state;

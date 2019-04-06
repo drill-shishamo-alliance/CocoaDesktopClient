@@ -6,5 +6,10 @@ export enum FeelingType {
     VERY_SATISFIED = '@FEEELING/VERY_SATISFIED'
 }
 
-type FeelingState = { feelingType: FeelingType };
+type FeelingState = {
+    feelingId: number;
+    feelingType: FeelingType;
+    name: string; // 自由に変更できる名前
+};
+
 export default FeelingState;
