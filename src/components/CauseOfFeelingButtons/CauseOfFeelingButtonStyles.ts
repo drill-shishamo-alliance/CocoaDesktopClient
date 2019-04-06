@@ -23,6 +23,9 @@ const styles = (theme: Theme) =>
         },
         IconColor: {
             color: '#4B4B4B'
+        },
+        ClickedIconColor: {
+            color: '#E17D00'
         }
     });
 
