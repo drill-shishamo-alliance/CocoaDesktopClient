@@ -6,12 +6,14 @@ import { CauseOfFeelingType } from 'src/models/states/CauseOfFeelingState';
 afterEach(cleanup);
 
 describe('CauseOfFeelingButton', () => {
+    const onClickSpy = jest.fn();
     describe('UIの仕様', () => {
         describe('causeOfFeelingTypeによって適切にボタンとテキストが描画される', () => {
             test('causeOfFeelingtype=AMOUNT_OF_WORKのとき「仕事量」ボタンとテキストが正しく描画される', () => {
                 const { getByLabelText } = render(
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.AMOUNT_OF_WORK}
+                        onClick={onClickSpy}
                     />
                 );
                 const amountOfWorkButton = getByLabelText(
@@ -29,6 +31,7 @@ describe('CauseOfFeelingButton', () => {
                 const { getByLabelText } = render(
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.JOB_DESCRIPTION}
+                        onClick={onClickSpy}
                     />
                 );
                 const jobDescriptionButton = getByLabelText(
@@ -48,6 +51,7 @@ describe('CauseOfFeelingButton', () => {
                 const { getByLabelText } = render(
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.HUMAN_RELATION}
+                        onClick={onClickSpy}
                     />
                 );
                 const humanRelationButton = getByLabelText(
@@ -65,6 +69,7 @@ describe('CauseOfFeelingButton', () => {
                 const { getByLabelText } = render(
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.EVALUATION}
+                        onClick={onClickSpy}
                     />
                 );
                 const evaluationButton = getByLabelText('evaluation-button');
@@ -80,6 +85,7 @@ describe('CauseOfFeelingButton', () => {
                 const { getByLabelText } = render(
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.OVERTIME_WORK}
+                        onClick={onClickSpy}
                     />
                 );
                 const overtimeWorkButton = getByLabelText(
@@ -97,6 +103,7 @@ describe('CauseOfFeelingButton', () => {
                 const { getByLabelText } = render(
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.HOLIDAY_WORK}
+                        onClick={onClickSpy}
                     />
                 );
                 const holidayWorkButton = getByLabelText('holiday-work-button');

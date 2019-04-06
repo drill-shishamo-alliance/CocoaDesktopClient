@@ -12,7 +12,8 @@ import { Dispatch } from 'redux';
 const mapStateToProps = (
     state: RootState
 ): InputCauseOfFeelingConnectedProps => ({
-    selectedFeelingType: state.screenState.feelingType
+    selectedFeelingState: state.screenState.feelingState,
+    causeOfFeelingStates: state.couseOfFeelingState
 });
 
 const mapDispatchToProps = (

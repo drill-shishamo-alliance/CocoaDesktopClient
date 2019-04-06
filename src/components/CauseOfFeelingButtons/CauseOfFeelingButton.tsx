@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core';
 import styles from './CauseOfFeelingButtonStyles';
 
 const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
-    const { classes, causeOfFeelingType } = props;
+    const { classes, causeOfFeelingType, onClick } = props;
 
     const getCauseOfFeelingButtonProps = (
         causeOfFeeling: CauseOfFeelingType
@@ -119,7 +119,10 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
     return (
         <div className={classes.buttonContainer}>
             <div aria-label={causeOfFeelingButtonProps.ariaLabel}>
-                <IconButton className={classes.button}>
+                <IconButton
+                    className={classes.button}
+                    onClick={onClick(causeOfFeelingType)}
+                >
                     {causeOfFeelingButtonProps.IconComponent}
                 </IconButton>
             </div>
