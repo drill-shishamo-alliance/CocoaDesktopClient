@@ -11,7 +11,7 @@ import SatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import VerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfiedRounded';
 import FaceIcon from '@material-ui/icons/Face';
 
-const DissatisfiedButton = (props: FeelingButtonProps) => {
+const FeelingButton = (props: FeelingButtonProps) => {
     const { classes, handleClick, feelingType } = props;
     const disabled = handleClick ? false : true;
 
@@ -104,4 +104,4 @@ const DissatisfiedButton = (props: FeelingButtonProps) => {
     );
 };
 
-export default withStyles(styles)(DissatisfiedButton);
+export default withStyles(styles)(FeelingButton);

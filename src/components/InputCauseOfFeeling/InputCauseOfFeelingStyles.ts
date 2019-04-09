@@ -39,11 +39,14 @@ const styles = (theme: Theme) =>
             alignItems: 'center'
         },
         sendButton: {
-            color: '#4B4B4B',
+            backgroundColor: '#E17D00', // 最初に表示されるボタンの色
+            '&:hover': {
+                backgroundColor: '#D2691E' // カーソルを合わせた時に変わる色
+            },
             width: 250,
             height: 37,
-            margin: theme.spacing.unit,
-            padding: theme.spacing.unit
+            marginTop: theme.spacing.unit
+            // padding: theme.spacing.unit
         },
         backIcon: {
             color: '#4B4B4B',
@@ -54,7 +57,9 @@ const styles = (theme: Theme) =>
             position: 'absolute',
             top: 15,
             left: 33,
-            margin: theme.spacing.unit
+            margin: theme.spacing.unit,
+            border: 'solid medium #E17D00', // 左:丸み 真ん中:線の太さ 右:線の色
+            borderRadius: '50%'
         }
     });
 

@@ -19,7 +19,7 @@ const styles = (theme: Theme) =>
             height: 64
         },
         detailText: {
-            marginTop: 0
+            marginTop: -15
         }
     });
 

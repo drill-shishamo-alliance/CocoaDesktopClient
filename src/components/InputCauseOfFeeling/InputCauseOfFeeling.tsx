@@ -112,9 +112,15 @@ class InputCauseOfFeeling extends React.Component<
                     <Typography
                         variant='h4'
                         aria-label='question'
-                    >{`の原因は何ですか？`}</Typography>
+                    >{`を選んだ理由は？`}</Typography>
                 </div>
-                <div className={classes.buttons} aria-label='buttons'>
+                <div
+                    className={classNames(
+                        classes.buttons,
+                        'WebkitAppRegionDrag'
+                    )}
+                    aria-label='buttons'
+                >
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.AMOUNT_OF_WORK}
                         onClick={this.handleCauseOfFeelingButtonClick}
@@ -143,13 +149,14 @@ class InputCauseOfFeeling extends React.Component<
                 <div aria-label='send-button'>
                     <Button
                         variant='contained'
+                        color='primary' // これを入れると文字が白くなる
                         className={classNames(
                             classes.button,
                             classes.sendButton
                         )}
                         onClick={this.handleSendButtonClick}
                     >
-                        Send
+                        送信する
                         <Icon>send</Icon>
                     </Button>
                 </div>

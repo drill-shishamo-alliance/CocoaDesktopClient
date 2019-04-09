@@ -19,7 +19,7 @@ const styles = (theme: Theme) =>
             height: 64
         },
         detailText: {
-            marginTop: 0
+            marginTop: -20
         },
         IconColor: {
             color: '#4B4B4B'
