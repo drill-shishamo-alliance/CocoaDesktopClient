@@ -175,6 +175,7 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                                 }
                             />
                         }
+                        label=''
                     />
                 </IconButton>
             </div>
