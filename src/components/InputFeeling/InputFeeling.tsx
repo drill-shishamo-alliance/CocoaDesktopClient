@@ -7,6 +7,7 @@ import { FeelingType } from '../../models/states/FeelingState';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import * as classNames from 'classnames';
 import 'src/utils/webkit_properties/webkit_properties.css';
+
 class InputFeeling extends React.Component<InputFeelingProps> {
     public handleClick = (feelingType: FeelingType) => (
         e: React.MouseEvent<HTMLElement, MouseEvent>

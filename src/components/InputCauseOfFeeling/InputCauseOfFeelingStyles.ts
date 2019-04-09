@@ -19,16 +19,6 @@ const styles = (theme: Theme) =>
             display: 'flex',
             justifyContent: 'space-around'
         },
-        button: {
-            marginTop: theme.spacing.unit,
-            marginLeft: 1,
-            marginRight: 1,
-            marginBottom: 0
-        },
-        icon: {
-            width: 64,
-            height: 64
-        },
         IconColor: {
             color: '#4B4B4B'
         },
@@ -45,11 +35,13 @@ const styles = (theme: Theme) =>
             },
             width: 250,
             height: 37,
-            marginTop: theme.spacing.unit
-            // padding: theme.spacing.unit
+            marginTop: theme.spacing.unit,
+            marginLeft: 1,
+            marginRight: 1,
+            marginBottom: 0
         },
         backIcon: {
-            color: '#4B4B4B',
+            color: '#E17D00',
             width: 32,
             height: 32
         },
@@ -58,6 +50,7 @@ const styles = (theme: Theme) =>
             top: 15,
             left: 33,
             margin: theme.spacing.unit,
+            padding: theme.spacing.unit,
             border: 'solid medium #E17D00', // 左:丸み 真ん中:線の太さ 右:線の色
             borderRadius: '50%'
         }

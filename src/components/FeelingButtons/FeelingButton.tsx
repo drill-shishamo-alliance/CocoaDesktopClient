@@ -5,6 +5,7 @@ import FeelingButtonProps from './FeelingButtonProps';
 import Typography from '@material-ui/core/Typography';
 import { FeelingType } from 'src/models/states/FeelingState';
 import styles from './FeelingButtonStyles';
+import * as classNames from 'classnames';
 import VeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfiedRounded';
 import DissatisfiedIcon from '@material-ui/icons/SentimentDissatisfiedRounded';
 import SatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
@@ -21,29 +22,60 @@ const FeelingButton = (props: FeelingButtonProps) => {
                 return {
                     ariaLabel: 'very-dissatisfied-button',
                     IconComponent: (
-                        <VeryDissatisfiedIcon className={classes.icon} />
+                        <VeryDissatisfiedIcon
+                            className={classNames(
+                                classes.icon,
+                                classes.veryDissatisfiedColor
+                            )}
+                        />
                     )
                 };
             case FeelingType.DISSATISFIED:
                 return {
                     ariaLabel: 'dissatisfied-button',
-                    IconComponent: <DissatisfiedIcon className={classes.icon} />
+                    IconComponent: (
+                        <DissatisfiedIcon
+                            className={classNames(
+                                classes.icon,
+                                classes.dissatisfiedColor
+                            )}
+                        />
+                    )
                 };
             case FeelingType.NORMAL:
                 return {
                     ariaLabel: 'normal-button',
-                    IconComponent: <FaceIcon className={classes.icon} />
+                    IconComponent: (
+                        <FaceIcon
+                            className={classNames(
+                                classes.icon,
+                                classes.normalColor
+                            )}
+                        />
+                    )
                 };
             case FeelingType.SATISFIED:
                 return {
                     ariaLabel: 'satisfied-button',
-                    IconComponent: <SatisfiedIcon className={classes.icon} />
+                    IconComponent: (
+                        <SatisfiedIcon
+                            className={classNames(
+                                classes.icon,
+                                classes.satisfiedColor
+                            )}
+                        />
+                    )
                 };
             case FeelingType.VERY_SATISFIED:
                 return {
                     ariaLabel: 'very-satisfied-button',
                     IconComponent: (
-                        <VerySatisfiedIcon className={classes.icon} />
+                        <VerySatisfiedIcon
+                            className={classNames(
+                                classes.icon,
+                                classes.verySatisfiedColor
+                            )}
+                        />
                     )
                 };
         }

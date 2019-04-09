@@ -15,8 +15,23 @@ const styles = (theme: Theme) =>
             marginBottom: 0
         },
         icon: {
-            width: 64,
-            height: 64
+            width: 56,
+            height: 56
+        },
+        veryDissatisfiedColor: {
+            color: '#191970'
+        },
+        dissatisfiedColor: {
+            color: '#0000ff'
+        },
+        normalColor: {
+            color: '#696969'
+        },
+        satisfiedColor: {
+            color: '#ff4500'
+        },
+        verySatisfiedColor: {
+            color: '#ff0000'
         },
         detailText: {
             marginTop: -15

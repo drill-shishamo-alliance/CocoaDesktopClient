@@ -9,22 +9,22 @@ const styles = (theme: Theme) =>
             alignItems: 'center' /* 子要素をflexboxにより中央に配置する */
         },
         button: {
-            marginTop: theme.spacing.unit,
-            marginLeft: 1,
-            marginRight: 1,
+            marginTop: 0,
+            marginLeft: 0,
+            marginRight: 0,
             marginBottom: 0
         },
         icon: {
-            width: 64,
-            height: 64
+            width: 48,
+            height: 48
         },
         detailText: {
             marginTop: -20
         },
-        IconColor: {
+        defaultIconColor: {
             color: '#4B4B4B'
         },
-        ClickedIconColor: {
+        clickedIconColor: {
             color: '#E17D00'
         }
     });

@@ -76,7 +76,7 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                         <EvaluationIcon
                             className={classnames(
                                 classes.icon,
-                                classes.IconColor
+                                classes.defaultIconColor
                             )}
                         />
                     ),
@@ -84,7 +84,7 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                         <EvaluationIcon
                             className={classnames(
                                 classes.icon,
-                                classes.ClickedIconColor
+                                classes.clickedIconColor
                             )}
                         />
                     )

@@ -150,10 +150,7 @@ class InputCauseOfFeeling extends React.Component<
                     <Button
                         variant='contained'
                         color='primary' // これを入れると文字が白くなる
-                        className={classNames(
-                            classes.button,
-                            classes.sendButton
-                        )}
+                        className={classes.sendButton}
                         onClick={this.handleSendButtonClick}
                     >
                         送信する
