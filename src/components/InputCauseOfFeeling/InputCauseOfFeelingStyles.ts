@@ -42,12 +42,12 @@ const styles = (theme: Theme) =>
         },
         backIcon: {
             color: '#E17D00',
-            width: 32,
-            height: 32
+            width: 16,
+            height: 16
         },
         backButton: {
             position: 'absolute',
-            top: 15,
+            top: 10,
             left: 33,
             margin: theme.spacing.unit,
             padding: theme.spacing.unit,
