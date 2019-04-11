@@ -3,13 +3,16 @@ import * as coreApiPb from '../models/protos/core-api_pb';
 import FeelingState from 'src/models/states/FeelingState';
 import CauseOfFeelingState from 'src/models/states/CauseOfFeelingState';
 
+export const localAddress = 'http://127.0.0.1:8080';
+export const devAddress = 'http://13.78.26.191:8080';
+
 export default class CoreApiServiceRequests {
     public inputDataRequest(
         feelingState: FeelingState,
         causeOfFeelingStates: CauseOfFeelingState[]
     ) {
         const client = new coreApiServiceClientPb.CoreAPIClient(
-            'http://127.0.0.1:8080',
+            devAddress,
             {},
             {}
         );
