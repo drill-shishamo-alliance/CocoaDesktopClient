@@ -169,19 +169,17 @@ class InputCauseOfFeeling extends React.Component<
                         onClick={this.handleCauseOfFeelingButtonClick}
                     />
                 </div>
-                <div aria-label='send-button'>
-                    <Fab
-                        variant='extended'
-                        color='primary'
-                        aria-label='send'
-                        className={classes.sendButton}
-                        onClick={this.handleSendButtonClick}
-                        disabled={this.state.isSendButtonDisabled}
-                    >
-                        <NavigationIcon className={classes.extendedIcon} />
-                        {this.state.sendButtonText}
-                    </Fab>
-                </div>
+                <Fab
+                    variant='extended'
+                    color='primary'
+                    aria-label='send-button'
+                    className={classes.sendButton}
+                    onClick={this.handleSendButtonClick}
+                    disabled={this.state.isSendButtonDisabled}
+                >
+                    <NavigationIcon className={classes.extendedIcon} />
+                    {this.state.sendButtonText}
+                </Fab>
             </div>
         ) : (
             <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
