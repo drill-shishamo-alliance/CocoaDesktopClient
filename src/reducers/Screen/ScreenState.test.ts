@@ -37,6 +37,6 @@ describe('ScreenReducer', () => {
         // ScreenTypeはINPUT_CAUSE_OF_FEELINGに変化する
         expect(state.screenType).toBe(ScreenType.INPUT_CAUSE_OF_FEELING);
         // FeelingTypeはaction.playloadの値に変化する
-        expect(state.feelingState.feelingType).toBe(action.payload);
+        expect(state.feelingState).toBe(action.payload);
     });
 });

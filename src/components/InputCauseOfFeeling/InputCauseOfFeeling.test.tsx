@@ -15,7 +15,7 @@ describe('InputCauseFeeling', () => {
                 <InputCauseOfFeeling
                     selectedFeelingState={{
                         feelingId: 2,
-                        feelingType: FeelingType.DISSATISFIED,
+                        feelingType: FeelingType.VERY_SATISFIED,
                         name: ''
                     }}
                     causeOfFeelingStates={[]}
@@ -28,7 +28,7 @@ describe('InputCauseFeeling', () => {
             expect(feelingButton.childElementCount).toBe(1);
         });
 
-        test('質問のテキストは「の原因は何ですか？」', () => {
+        test('質問のテキストは「理由があったら教えてください。」', () => {
             const { getByLabelText } = render(
                 <InputCauseOfFeeling
                     selectedFeelingState={{
@@ -43,7 +43,7 @@ describe('InputCauseFeeling', () => {
 
             const question = getByLabelText('question');
 
-            expect(question.textContent).toBe('の原因は何ですか？');
+            expect(question.textContent).toBe('理由があったら教えてください。');
         });
 
         test('原因ボタンが6つ描画される', () => {
