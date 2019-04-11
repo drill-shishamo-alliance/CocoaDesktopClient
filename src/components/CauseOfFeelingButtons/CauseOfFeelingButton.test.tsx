@@ -16,13 +16,11 @@ describe('CauseOfFeelingButton', () => {
                         onClick={onClickSpy}
                     />
                 );
-                const amountOfWorkButton = getByLabelText(
-                    'amount-of-work-button'
-                );
+
+                // 「仕事内容」ボタンが描画される
+                getByLabelText('amount-of-work-button');
                 const amountOfWorkText = getByLabelText('amount-of-work-text');
 
-                // 「仕事内容」ボタンが1つ描画される
-                expect(amountOfWorkButton.childElementCount).toBe(1);
                 // テキストは「仕事内容」
                 expect(amountOfWorkText.textContent).toBe('仕事量');
             });
@@ -34,15 +32,13 @@ describe('CauseOfFeelingButton', () => {
                         onClick={onClickSpy}
                     />
                 );
-                const jobDescriptionButton = getByLabelText(
-                    'job-description-button'
-                );
+
+                // 「仕事内容」ボタンが1つ描画される
+                getByLabelText('job-description-button');
                 const jobDescriptionText = getByLabelText(
                     'job-description-text'
                 );
 
-                // 「仕事内容」ボタンが1つ描画される
-                expect(jobDescriptionButton.childElementCount).toBe(1);
                 // テキストは「仕事内容」
                 expect(jobDescriptionText.textContent).toBe('仕事内容');
             });
@@ -54,13 +50,12 @@ describe('CauseOfFeelingButton', () => {
                         onClick={onClickSpy}
                     />
                 );
-                const humanRelationButton = getByLabelText(
-                    'human-relation-button'
-                );
+
+                // 「人間関係」ボタンが描画される
+                getByLabelText('human-relation-button');
+
                 const humanRelationText = getByLabelText('human-relation-text');
 
-                // 「人間関係」ボタンが1つ描画される
-                expect(humanRelationButton.childElementCount).toBe(1);
                 // テキストは「人間関係」
                 expect(humanRelationText.textContent).toBe('人間関係');
             });
@@ -72,11 +67,11 @@ describe('CauseOfFeelingButton', () => {
                         onClick={onClickSpy}
                     />
                 );
-                const evaluationButton = getByLabelText('evaluation-button');
+
+                // 「評価」ボタンが描画される
+                getByLabelText('evaluation-button');
                 const evaluationText = getByLabelText('evaluation-text');
 
-                // 「評価」ボタンが1つ描画される
-                expect(evaluationButton.childElementCount).toBe(1);
                 // テキストは「評価」
                 expect(evaluationText.textContent).toBe('評価');
             });
@@ -88,13 +83,11 @@ describe('CauseOfFeelingButton', () => {
                         onClick={onClickSpy}
                     />
                 );
-                const overtimeWorkButton = getByLabelText(
-                    'overtime-work-button'
-                );
-                const overtimeWorkText = getByLabelText('overtime-work-text');
 
                 // 「残業」ボタンが1つ描画される
-                expect(overtimeWorkButton.childElementCount).toBe(1);
+                getByLabelText('overtime-work-button');
+                const overtimeWorkText = getByLabelText('overtime-work-text');
+
                 // テキストは「残業」
                 expect(overtimeWorkText.textContent).toBe('残業');
             });
@@ -106,11 +99,11 @@ describe('CauseOfFeelingButton', () => {
                         onClick={onClickSpy}
                     />
                 );
-                const holidayWorkButton = getByLabelText('holiday-work-button');
-                const holidayWorkText = getByLabelText('holiday-work-text');
 
                 // 「休日出勤」ボタンが1つ描画される
-                expect(holidayWorkButton.childElementCount).toBe(1);
+                getByLabelText('holiday-work-button');
+                const holidayWorkText = getByLabelText('holiday-work-text');
+
                 // テキストは「休日出勤」
                 expect(holidayWorkText.textContent).toBe('休日出勤');
             });
