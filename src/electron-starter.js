@@ -18,7 +18,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 570,
     height: 320,
-    resizable: false,
+    resizable: false
   })
   // and load the index.html of the app.
   const startUrl =
@@ -30,7 +30,7 @@ function createWindow () {
     })
   mainWindow.loadURL(startUrl)
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
