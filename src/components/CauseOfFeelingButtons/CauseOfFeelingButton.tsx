@@ -2,16 +2,16 @@ import * as React from 'react';
 import CauseOfFeelingButtonProps from './CauseOfFeelingButtonProps';
 import { CauseOfFeelingType } from 'src/models/states/CauseOfFeelingState';
 import AmountOfWorkIcon from '../../assets/InputCauseOfFeeling/amountOfWorkIcon.svg';
-import AmountOfWorkClickedIcon from '../../assets/InputCauseOfFeeling/amountOfWorkIconOrange.svg';
+import AmountOfWorkClickedIcon from 'src/assets/InputCauseOfFeeling/FlatOrange/amountOfWorkIcon.svg';
 import JobDescriptionIcon from '../../assets/InputCauseOfFeeling/jobDescriptionIcon.svg';
-import JobDescriptionClickedIcon from '../../assets/InputCauseOfFeeling/jobDescriptionIconOrange.svg';
+import JobDescriptionClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/jobDescriptionIcon.svg';
 import HumanRelationIcon from '../../assets/InputCauseOfFeeling/humanRelationIcon.svg';
-import HumanRelationClickedIcon from '../../assets/InputCauseOfFeeling/humanRelationIconOrange.svg';
+import HumanRelationClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/humanRelationIcon.svg';
 import EvaluationIcon from '@material-ui/icons/ThumbsUpDown';
 import OvertimeWorkIcon from '../../assets/InputCauseOfFeeling/overtimeWorkIcon.svg';
-import OvertimeWorkClickedIcon from '../../assets/InputCauseOfFeeling/overtimeWorkIconOrange.svg';
+import OvertimeWorkClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/overtimeWorkIcon.svg';
 import HolidayWorkIcon from '../../assets/InputCauseOfFeeling/holidayWorkIcon.svg';
-import HolidayWorkClickedIcon from '../../assets/InputCauseOfFeeling/holidayWorkIconOrange.svg';
+import HolidayWorkClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/holidayWorkIcon.svg';
 import * as classnames from 'classnames';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -164,7 +164,10 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
     return (
         <div className={classes.buttonContainer}>
             <div aria-label={causeOfFeelingButtonProps.ariaLabel}>
-                <IconButton onClick={onClick(causeOfFeelingType)}>
+                <IconButton
+                    onClick={onClick(causeOfFeelingType)}
+                    style={{ padding: 0 }}
+                >
                     <FormControlLabel
                         className={classes.button}
                         control={
@@ -180,7 +183,7 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                 </IconButton>
             </div>
             <Typography
-                variant='h6'
+                variant='body2'
                 className={classes.detailText}
                 aria-label={causeOfFeelingTextProps.ariaLabel}
             >
