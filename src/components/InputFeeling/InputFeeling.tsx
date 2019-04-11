@@ -23,7 +23,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
     public render() {
         const { classes } = this.props;
         return (
-            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+            <div className={classNames(classes.root)}>
                 <Typography variant='h5' aria-label='question'>
                     今日の気分はどうですか？
                 </Typography>

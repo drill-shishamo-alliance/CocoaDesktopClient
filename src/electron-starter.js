@@ -19,9 +19,6 @@ function createWindow () {
     width: 570,
     height: 320,
     resizable: false,
-    // transparent: true,
-    frame: false,
-    toolbar: false
   })
   // and load the index.html of the app.
   const startUrl =

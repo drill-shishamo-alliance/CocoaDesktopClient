@@ -116,7 +116,7 @@ class InputCauseOfFeeling extends React.Component<
         const { isSend } = this.state;
 
         return !isSend ? (
-            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+            <div className={classNames(classes.root)}>
                 <div aria-label='back-button'>
                     <IconButton
                         className={classes.backButton}
