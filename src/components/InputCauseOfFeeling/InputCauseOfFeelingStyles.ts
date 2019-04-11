@@ -15,44 +15,47 @@ const styles = (theme: Theme) =>
             textAlign: 'center',
             width: '100%'
         },
+        margin: {
+            margin: theme.spacing.unit
+        },
         buttons: {
             display: 'flex',
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
+            margin: theme.spacing.unit
         },
         IconColor: {
             color: '#4B4B4B'
         },
         questionContainer: {
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center'
         },
         sendButton: {
-            backgroundColor: '#E17D00', // 最初に表示されるボタンの色
+            backgroundColor: '#E57D22', // 最初に表示されるボタンの色
             '&:hover': {
                 backgroundColor: '#D2691E' // カーソルを合わせた時に変わる色
             },
-            width: 250,
-            height: 37,
-            marginTop: theme.spacing.unit,
-            marginLeft: 1,
-            marginRight: 1,
-            marginBottom: 0
+            minWidth: 190,
+            margin: theme.spacing.unit,
+            marginTop: theme.spacing.unit
         },
         backIcon: {
-            color: '#E17D00',
             width: 16,
             height: 16
         },
         backButton: {
             position: 'absolute',
-            top: 10,
-            left: 33,
+            top: '8%',
+            left: '8%',
             margin: theme.spacing.unit,
             padding: theme.spacing.unit,
-            border: 'solid medium #E17D00', // 左:丸み 真ん中:線の太さ 右:線の色
+            border: 'solid', // 左:丸み 真ん中:線の太さ 右:線の色
             borderRadius: '50%'
+        },
+        extendedIcon: {
+            marginRight: theme.spacing.unit
         }
     });
 
