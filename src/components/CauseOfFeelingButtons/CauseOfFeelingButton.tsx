@@ -2,19 +2,26 @@ import * as React from 'react';
 import CauseOfFeelingButtonProps from './CauseOfFeelingButtonProps';
 import { CauseOfFeelingType } from 'src/models/states/CauseOfFeelingState';
 import AmountOfWorkIcon from '../../assets/InputCauseOfFeeling/amountOfWorkIcon.svg';
+import AmountOfWorkClickedIcon from 'src/assets/InputCauseOfFeeling/FlatOrange/amountOfWorkIcon.svg';
 import JobDescriptionIcon from '../../assets/InputCauseOfFeeling/jobDescriptionIcon.svg';
+import JobDescriptionClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/jobDescriptionIcon.svg';
 import HumanRelationIcon from '../../assets/InputCauseOfFeeling/humanRelationIcon.svg';
+import HumanRelationClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/humanRelationIcon.svg';
 import EvaluationIcon from '@material-ui/icons/ThumbsUpDown';
 import OvertimeWorkIcon from '../../assets/InputCauseOfFeeling/overtimeWorkIcon.svg';
+import OvertimeWorkClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/overtimeWorkIcon.svg';
 import HolidayWorkIcon from '../../assets/InputCauseOfFeeling/holidayWorkIcon.svg';
+import HolidayWorkClickedIcon from '../../assets/InputCauseOfFeeling/FlatOrange/holidayWorkIcon.svg';
 import * as classnames from 'classnames';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 import styles from './CauseOfFeelingButtonStyles';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
-    const { classes, causeOfFeelingType } = props;
+    const { classes, causeOfFeelingType, onClick } = props;
 
     const getCauseOfFeelingButtonProps = (
         causeOfFeeling: CauseOfFeelingType
@@ -25,6 +32,12 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                     ariaLabel: 'amount-of-work-button',
                     IconComponent: (
                         <img src={AmountOfWorkIcon} className={classes.icon} />
+                    ),
+                    ClickedIconComponent: (
+                        <img
+                            src={AmountOfWorkClickedIcon}
+                            className={classes.icon}
+                        />
                     )
                 };
             case CauseOfFeelingType.JOB_DESCRIPTION:
@@ -35,6 +48,12 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                             src={JobDescriptionIcon}
                             className={classes.icon}
                         />
+                    ),
+                    ClickedIconComponent: (
+                        <img
+                            src={JobDescriptionClickedIcon}
+                            className={classes.icon}
+                        />
                     )
                 };
             case CauseOfFeelingType.HUMAN_RELATION:
@@ -42,6 +61,12 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                     ariaLabel: 'human-relation-button',
                     IconComponent: (
                         <img src={HumanRelationIcon} className={classes.icon} />
+                    ),
+                    ClickedIconComponent: (
+                        <img
+                            src={HumanRelationClickedIcon}
+                            className={classes.icon}
+                        />
                     )
                 };
             case CauseOfFeelingType.EVALUATION:
@@ -51,7 +76,15 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                         <EvaluationIcon
                             className={classnames(
                                 classes.icon,
-                                classes.IconColor
+                                classes.defaultIconColor
+                            )}
+                        />
+                    ),
+                    ClickedIconComponent: (
+                        <EvaluationIcon
+                            className={classnames(
+                                classes.icon,
+                                classes.clickedIconColor
                             )}
                         />
                     )
@@ -61,6 +94,12 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                     ariaLabel: 'overtime-work-button',
                     IconComponent: (
                         <img src={OvertimeWorkIcon} className={classes.icon} />
+                    ),
+                    ClickedIconComponent: (
+                        <img
+                            src={OvertimeWorkClickedIcon}
+                            className={classes.icon}
+                        />
                     )
                 };
             case CauseOfFeelingType.HOLIDAY_WORK:
@@ -68,6 +107,12 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
                     ariaLabel: 'holiday-work-button',
                     IconComponent: (
                         <img src={HolidayWorkIcon} className={classes.icon} />
+                    ),
+                    ClickedIconComponent: (
+                        <img
+                            src={HolidayWorkClickedIcon}
+                            className={classes.icon}
+                        />
                     )
                 };
         }
@@ -119,12 +164,26 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
     return (
         <div className={classes.buttonContainer}>
             <div aria-label={causeOfFeelingButtonProps.ariaLabel}>
-                <IconButton className={classes.button}>
-                    {causeOfFeelingButtonProps.IconComponent}
+                <IconButton
+                    onClick={onClick(causeOfFeelingType)}
+                    style={{ padding: 0 }}
+                >
+                    <FormControlLabel
+                        className={classes.button}
+                        control={
+                            <Checkbox
+                                icon={causeOfFeelingButtonProps.IconComponent}
+                                checkedIcon={
+                                    causeOfFeelingButtonProps.ClickedIconComponent
+                                }
+                            />
+                        }
+                        label=''
+                    />
                 </IconButton>
             </div>
             <Typography
-                variant='h6'
+                variant='body2'
                 className={classes.detailText}
                 aria-label={causeOfFeelingTextProps.ariaLabel}
             >

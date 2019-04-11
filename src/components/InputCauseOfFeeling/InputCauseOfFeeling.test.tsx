@@ -13,7 +13,12 @@ describe('InputCauseFeeling', () => {
         test('selectedFeelingTypeによって適切なボタンが描画される', () => {
             const { getByLabelText } = render(
                 <InputCauseOfFeeling
-                    selectedFeelingType={FeelingType.VERY_SATISFIED}
+                    selectedFeelingState={{
+                        feelingId: 2,
+                        feelingType: FeelingType.VERY_SATISFIED,
+                        name: ''
+                    }}
+                    causeOfFeelingStates={[]}
                     switchInputFeeling={mockSwitchInputFeeling}
                 />
             );
@@ -23,23 +28,33 @@ describe('InputCauseFeeling', () => {
             expect(feelingButton.childElementCount).toBe(1);
         });
 
-        test('質問のテキストは「の原因は何ですか？」', () => {
+        test('質問のテキストは「理由があったら教えてください。」', () => {
             const { getByLabelText } = render(
                 <InputCauseOfFeeling
-                    selectedFeelingType={FeelingType.VERY_SATISFIED}
+                    selectedFeelingState={{
+                        feelingId: 2,
+                        feelingType: FeelingType.DISSATISFIED,
+                        name: ''
+                    }}
+                    causeOfFeelingStates={[]}
                     switchInputFeeling={mockSwitchInputFeeling}
                 />
             );
 
             const question = getByLabelText('question');
 
-            expect(question.textContent).toBe('の原因は何ですか？');
+            expect(question.textContent).toBe('理由があったら教えてください。');
         });
 
         test('原因ボタンが6つ描画される', () => {
             const { getByLabelText } = render(
                 <InputCauseOfFeeling
-                    selectedFeelingType={FeelingType.VERY_SATISFIED}
+                    selectedFeelingState={{
+                        feelingId: 2,
+                        feelingType: FeelingType.DISSATISFIED,
+                        name: ''
+                    }}
+                    causeOfFeelingStates={[]}
                     switchInputFeeling={mockSwitchInputFeeling}
                 />
             );
@@ -52,7 +67,12 @@ describe('InputCauseFeeling', () => {
         test('戻るボタンが描画される', () => {
             const { getByLabelText } = render(
                 <InputCauseOfFeeling
-                    selectedFeelingType={FeelingType.VERY_SATISFIED}
+                    selectedFeelingState={{
+                        feelingId: 2,
+                        feelingType: FeelingType.DISSATISFIED,
+                        name: ''
+                    }}
+                    causeOfFeelingStates={[]}
                     switchInputFeeling={mockSwitchInputFeeling}
                 />
             );
@@ -65,7 +85,12 @@ describe('InputCauseFeeling', () => {
         test('Sendボタンが描画される', () => {
             const { getByLabelText } = render(
                 <InputCauseOfFeeling
-                    selectedFeelingType={FeelingType.VERY_SATISFIED}
+                    selectedFeelingState={{
+                        feelingId: 2,
+                        feelingType: FeelingType.DISSATISFIED,
+                        name: ''
+                    }}
+                    causeOfFeelingStates={[]}
                     switchInputFeeling={mockSwitchInputFeeling}
                 />
             );

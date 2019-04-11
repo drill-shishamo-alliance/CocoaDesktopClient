@@ -1,6 +1,6 @@
 import { createStandardAction } from 'typesafe-actions';
 import ScreenActionType from './ScreenActionType';
-import { FeelingType } from '../../models/states/FeelingState';
+import FeelingState from '../../models/states/FeelingState';
 
 export const switchInputFeelingScreen = createStandardAction(
     ScreenActionType.SWITCH_INPUT_FEELING
@@ -8,4 +8,8 @@ export const switchInputFeelingScreen = createStandardAction(
 
 export const switchInputCauseOfFeelingScreen = createStandardAction(
     ScreenActionType.SWITCH_INPUT_CAUSE_OF_FEELING
-)<FeelingType>();
+)<FeelingState>();
+
+export const switchInputResultScreen = createStandardAction(
+    ScreenActionType.SWITCH_RESULT
+)();

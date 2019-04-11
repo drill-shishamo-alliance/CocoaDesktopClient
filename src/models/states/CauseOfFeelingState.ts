@@ -7,5 +7,10 @@ export enum CauseOfFeelingType {
     HOLIDAY_WORK = '@CAUSE/HOLIDAY_WORK'
 }
 
-type CauseOfFeelingState = { causeOfFeelingType: CauseOfFeelingType };
+type CauseOfFeelingState = {
+    id: number;
+    type: CauseOfFeelingType;
+    name: string;
+};
+
 export default CauseOfFeelingState;

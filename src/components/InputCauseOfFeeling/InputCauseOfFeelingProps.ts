@@ -1,9 +1,11 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './InputCauseOfFeelingStyles';
-import { FeelingType } from 'src/models/states/FeelingState';
+import FeelingState from 'src/models/states/FeelingState';
+import CauseOfFeelingState from 'src/models/states/CauseOfFeelingState';
 
 export type InputCauseOfFeelingConnectedProps = {
-    selectedFeelingType: FeelingType;
+    selectedFeelingState: FeelingState;
+    causeOfFeelingStates: CauseOfFeelingState[];
 };
 
 export type InputCauseOfFeelingDispatchProps = {

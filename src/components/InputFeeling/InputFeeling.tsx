@@ -7,19 +7,24 @@ import { FeelingType } from '../../models/states/FeelingState';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import * as classNames from 'classnames';
 import 'src/utils/webkit_properties/webkit_properties.css';
+
 class InputFeeling extends React.Component<InputFeelingProps> {
     public handleClick = (feelingType: FeelingType) => (
         e: React.MouseEvent<HTMLElement, MouseEvent>
     ) => {
-        const { switchInputCauseOfFeeling } = this.props;
-        switchInputCauseOfFeeling(feelingType);
+        const { switchInputCauseOfFeeling, feelingStates } = this.props;
+        const index = feelingStates.findIndex(
+            state => state.feelingType === feelingType
+        );
+
+        switchInputCauseOfFeeling(feelingStates[index]);
     };
 
     public render() {
         const { classes } = this.props;
         return (
             <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
-                <Typography variant='h4' aria-label='question'>
+                <Typography variant='h5' aria-label='question'>
                     今日の気分はどうですか？
                 </Typography>
                 <div
@@ -30,15 +35,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                     aria-label='buttons'
                 >
                     <FeelingButton
-                        feelingType={FeelingType.VERY_DISSATISFIED}
-                        handleClick={this.handleClick}
-                    />
-                    <FeelingButton
-                        feelingType={FeelingType.DISSATISFIED}
-                        handleClick={this.handleClick}
-                    />
-                    <FeelingButton
-                        feelingType={FeelingType.NORMAL}
+                        feelingType={FeelingType.VERY_SATISFIED}
                         handleClick={this.handleClick}
                     />
                     <FeelingButton
@@ -46,7 +43,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         handleClick={this.handleClick}
                     />
                     <FeelingButton
-                        feelingType={FeelingType.VERY_SATISFIED}
+                        feelingType={FeelingType.NORMAL}
+                        handleClick={this.handleClick}
+                    />
+                    <FeelingButton
+                        feelingType={FeelingType.DISSATISFIED}
+                        handleClick={this.handleClick}
+                    />
+                    <FeelingButton
+                        feelingType={FeelingType.VERY_DISSATISFIED}
                         handleClick={this.handleClick}
                     />
                 </div>

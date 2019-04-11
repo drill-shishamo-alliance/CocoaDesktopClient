@@ -15,11 +15,26 @@ const styles = (theme: Theme) =>
             marginBottom: 0
         },
         icon: {
-            width: 64,
-            height: 64
+            width: 56,
+            height: 56
+        },
+        veryDissatisfiedColor: {
+            color: '#7E8B8C' // flat gray dark
+        },
+        dissatisfiedColor: {
+            color: '#2880BA' // flat skyblue dark
+        },
+        normalColor: {
+            color: '#E57D22' // flat orange
+        },
+        satisfiedColor: {
+            color: '#1ABC9C' // flat mint
+        },
+        verySatisfiedColor: {
+            color: '#EF7079' // flat watermelon
         },
         detailText: {
-            marginTop: 0
+            marginTop: -15
         }
     });
 

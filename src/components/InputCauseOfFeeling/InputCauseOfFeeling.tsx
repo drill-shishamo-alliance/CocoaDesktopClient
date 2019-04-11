@@ -6,69 +6,191 @@ import Typography from '@material-ui/core/Typography';
 import styles from './InputCauseOfFeelingStyles';
 import * as classNames from 'classnames';
 import FeelingButton from '../FeelingButtons/FeelingButton';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton';
-import { CauseOfFeelingType } from 'src/models/states/CauseOfFeelingState';
+import CauseOfFeelingState, {
+    CauseOfFeelingType
+} from 'src/models/states/CauseOfFeelingState';
 import 'src/utils/webkit_properties/webkit_properties.css';
-class InputCauseOfFeeling extends React.Component<InputCauseOfFeelingProps> {
-    public handleClick = () => {
+import InputCauseOfFeelingState from './InputCauseOfFeelingState';
+import CoreApiServiceRequests from 'src/requests/CoreApiRequests';
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
+class InputCauseOfFeeling extends React.Component<
+    InputCauseOfFeelingProps,
+    InputCauseOfFeelingState
+> {
+    constructor(props: InputCauseOfFeelingProps) {
+        super(props);
+        this.state = {
+            inputCauseOfFeelings: [],
+            toggledButtons: new Array(6),
+            isSend: false,
+            sendButtonText: '気分だけ伝える',
+            isSendButtonDisabled: false
+        };
+    }
+
+    public handleBackButtonClick = () => {
         const { switchInputFeeling } = this.props;
         switchInputFeeling();
     };
 
+    public handleCauseOfFeelingButtonClick = (
+        toggledCause: CauseOfFeelingType
+    ) => () => {
+        const updateInputCauseOfFeelings: CauseOfFeelingType[] = this.state
+            .inputCauseOfFeelings;
+
+        // 入力された原因がinputCauseOfFeelingsにあるか探す
+        const index = updateInputCauseOfFeelings.findIndex(
+            c => c === toggledCause
+        );
+
+        if (index >= 0) {
+            // あった場合は消す
+            updateInputCauseOfFeelings.splice(index);
+        } else {
+            // なかった場合は追加する
+            updateInputCauseOfFeelings.push(toggledCause);
+        }
+
+        this.setState({
+            inputCauseOfFeelings: [
+                ...this.state.inputCauseOfFeelings.slice(
+                    this.state.inputCauseOfFeelings.length
+                ),
+                ...updateInputCauseOfFeelings
+            ]
+        });
+
+        if (this.state.inputCauseOfFeelings.length > 0) {
+            this.setState({
+                sendButtonText: '気分と理由を伝える'
+            });
+        } else {
+            this.setState({
+                sendButtonText: '気分だけ伝える'
+            });
+        }
+    };
+
+    public handleSendButtonClick = () => {
+        const { selectedFeelingState, causeOfFeelingStates } = this.props;
+        const requests = new CoreApiServiceRequests();
+        const selectedCauseOfFeelingStates: CauseOfFeelingState[] = [];
+        for (const inputType of this.state.inputCauseOfFeelings) {
+            const state = causeOfFeelingStates.find(c => c.type === inputType);
+            if (state) {
+                selectedCauseOfFeelingStates.push(state);
+            }
+        }
+
+        // 2回押せないように
+        this.setState({
+            isSendButtonDisabled: true
+        });
+
+        requests
+            .inputDataRequest(
+                selectedFeelingState,
+                selectedCauseOfFeelingStates
+            )
+            .then(result => {
+                if (result instanceof Error) {
+                    console.log(result);
+                } else {
+                    const r = result.getResult();
+                    console.log(r);
+                }
+            })
+            .then(() => {
+                this.setState({
+                    isSend: true
+                });
+            });
+    };
+
     public render() {
-        const { classes, selectedFeelingType } = this.props;
-        return (
+        const { classes, selectedFeelingState } = this.props;
+        const { isSend } = this.state;
+
+        return !isSend ? (
             <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
                 <div aria-label='back-button'>
                     <IconButton
                         className={classes.backButton}
-                        onClick={this.handleClick}
+                        onClick={this.handleBackButtonClick}
                     >
                         <BackIcon className={classes.backIcon} />
                     </IconButton>
                 </div>
                 <div className={classes.questionContainer}>
-                    <FeelingButton feelingType={selectedFeelingType} />
+                    <FeelingButton
+                        feelingType={selectedFeelingState.feelingType}
+                    />
                     <Typography
-                        variant='h4'
+                        variant='h5'
                         aria-label='question'
-                    >{`の原因は何ですか？`}</Typography>
+                        className={classes.margin}
+                    >
+                        {`理由があったら教えてください。`}
+                    </Typography>
                 </div>
-                <div className={classes.buttons} aria-label='buttons'>
+                <div
+                    className={classNames(
+                        classes.buttons,
+                        'WebkitAppRegionDrag'
+                    )}
+                    aria-label='buttons'
+                >
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.AMOUNT_OF_WORK}
+                        onClick={this.handleCauseOfFeelingButtonClick}
                     />
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.JOB_DESCRIPTION}
+                        onClick={this.handleCauseOfFeelingButtonClick}
                     />
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.HUMAN_RELATION}
+                        onClick={this.handleCauseOfFeelingButtonClick}
                     />
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.EVALUATION}
+                        onClick={this.handleCauseOfFeelingButtonClick}
                     />
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.OVERTIME_WORK}
+                        onClick={this.handleCauseOfFeelingButtonClick}
                     />
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.HOLIDAY_WORK}
+                        onClick={this.handleCauseOfFeelingButtonClick}
                     />
                 </div>
                 <div aria-label='send-button'>
-                    <Button
-                        variant='contained'
-                        className={classNames(
-                            classes.button,
-                            classes.sendButton
-                        )}
+                    <Fab
+                        variant='extended'
+                        color='primary'
+                        aria-label='send'
+                        className={classes.sendButton}
+                        onClick={this.handleSendButtonClick}
+                        disabled={this.state.isSendButtonDisabled}
                     >
-                        Send
-                        <Icon>send</Icon>
-                    </Button>
+                        <NavigationIcon className={classes.extendedIcon} />
+                        {this.state.sendButtonText}
+                    </Fab>
                 </div>
+            </div>
+        ) : (
+            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+                <Typography variant='h5' aria-label='thanks-message1'>
+                    テストのご協力、ありがとうございます！
+                </Typography>
+                <Typography variant='h6' aria-label='thanks-message2'>
+                    お手数ですがアプリを終了してください。
+                </Typography>
             </div>
         );
     }
