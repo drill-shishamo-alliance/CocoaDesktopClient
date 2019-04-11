@@ -6,7 +6,8 @@ import CauseOfFeelingState from 'src/models/states/CauseOfFeelingState';
 export const localAddress = 'http://127.0.0.1:8080';
 export const devAddress = 'http://13.78.26.191:8080';
 
-const userName = 'user1';
+const userName = 'test-user1';
+console.log(`【Debug用】ユーザー名：${userName}`);
 export default class CoreApiServiceRequests {
     public inputDataRequest(
         feelingState: FeelingState,
@@ -33,7 +34,6 @@ export default class CoreApiServiceRequests {
                 request.setFeeling(requestFeeling);
                 request.setCauseOfFeelingList(requestCauseOfFeelings);
                 request.setRespondent(userName);
-                console.log(`【Debug用】${userName}としてリクエストしました。`);
                 client.inputData(request, {}, (error, response) => {
                     if (error) {
                         reject(error);
