@@ -24,7 +24,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
         const { classes } = this.props;
         return (
             <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
-                <Typography variant='h4' aria-label='question'>
+                <Typography variant='h5' aria-label='question'>
                     今日の気分はどうですか？
                 </Typography>
                 <div
@@ -35,15 +35,7 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                     aria-label='buttons'
                 >
                     <FeelingButton
-                        feelingType={FeelingType.VERY_DISSATISFIED}
-                        handleClick={this.handleClick}
-                    />
-                    <FeelingButton
-                        feelingType={FeelingType.DISSATISFIED}
-                        handleClick={this.handleClick}
-                    />
-                    <FeelingButton
-                        feelingType={FeelingType.NORMAL}
+                        feelingType={FeelingType.VERY_SATISFIED}
                         handleClick={this.handleClick}
                     />
                     <FeelingButton
@@ -51,7 +43,15 @@ class InputFeeling extends React.Component<InputFeelingProps> {
                         handleClick={this.handleClick}
                     />
                     <FeelingButton
-                        feelingType={FeelingType.VERY_SATISFIED}
+                        feelingType={FeelingType.NORMAL}
+                        handleClick={this.handleClick}
+                    />
+                    <FeelingButton
+                        feelingType={FeelingType.DISSATISFIED}
+                        handleClick={this.handleClick}
+                    />
+                    <FeelingButton
+                        feelingType={FeelingType.VERY_DISSATISFIED}
                         handleClick={this.handleClick}
                     />
                 </div>
