@@ -19,19 +19,19 @@ const styles = (theme: Theme) =>
             height: 56
         },
         veryDissatisfiedColor: {
-            color: '#191970'
+            color: '#7E8B8C' // flat gray dark
         },
         dissatisfiedColor: {
-            color: '#0000ff'
+            color: '#2880BA' // flat skyblue dark
         },
         normalColor: {
-            color: '#696969'
+            color: '#E57D22' // flat orange
         },
         satisfiedColor: {
-            color: '#ff4500'
+            color: '#1ABC9C' // flat mint
         },
         verySatisfiedColor: {
-            color: '#ff0000'
+            color: '#EF7079' // flat watermelon
         },
         detailText: {
             marginTop: -15

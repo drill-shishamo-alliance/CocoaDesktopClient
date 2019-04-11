@@ -88,27 +88,32 @@ const FeelingButton = (props: FeelingButtonProps) => {
             case FeelingType.VERY_DISSATISFIED:
                 return {
                     ariaLabel: 'very-dissatisfied-text',
-                    text: '最悪'
+                    text: '最悪',
+                    colorClassName: classes.veryDissatisfiedColor
                 };
             case FeelingType.DISSATISFIED:
                 return {
                     ariaLabel: 'dissatisfied-text',
-                    text: '悪い'
+                    text: '悪い',
+                    colorClassName: classes.dissatisfiedColor
                 };
             case FeelingType.NORMAL:
                 return {
                     ariaLabel: 'normal-text',
-                    text: '普通'
+                    text: '普通',
+                    colorClassName: classes.normalColor
                 };
             case FeelingType.SATISFIED:
                 return {
                     ariaLabel: 'satisfied-text',
-                    text: '良い'
+                    text: '良い',
+                    colorClassName: classes.satisfiedColor
                 };
             case FeelingType.VERY_SATISFIED:
                 return {
                     ariaLabel: 'very-satisfied-text',
-                    text: '最高'
+                    text: '最高',
+                    colorClassName: classes.verySatisfiedColor
                 };
         }
     };
@@ -126,8 +131,11 @@ const FeelingButton = (props: FeelingButtonProps) => {
                 {iconButtonProps.IconComponent}
             </IconButton>
             <Typography
-                variant='h6'
-                className={classes.detailText}
+                variant='button'
+                className={classNames(
+                    classes.detailText,
+                    typographyProps.colorClassName
+                )}
                 aria-label={typographyProps.ariaLabel}
             >
                 {typographyProps.text}
