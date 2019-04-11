@@ -26,7 +26,8 @@ class InputCauseOfFeeling extends React.Component<
             inputCauseOfFeelings: [],
             toggledButtons: new Array(6),
             isSend: false,
-            sendButtonText: '気分だけ伝える'
+            sendButtonText: '気分だけ伝える',
+            isSendButtonDisabled: false
         };
     }
 
@@ -62,7 +63,7 @@ class InputCauseOfFeeling extends React.Component<
                 ...updateInputCauseOfFeelings
             ]
         });
-        console.log(this.state.inputCauseOfFeelings);
+
         if (this.state.inputCauseOfFeelings.length > 0) {
             this.setState({
                 sendButtonText: '気分と理由を伝える'
@@ -75,9 +76,6 @@ class InputCauseOfFeeling extends React.Component<
     };
 
     public handleSendButtonClick = () => {
-        this.setState({
-            isSend: true
-        });
         const { selectedFeelingState, causeOfFeelingStates } = this.props;
         const requests = new CoreApiServiceRequests();
         const selectedCauseOfFeelingStates: CauseOfFeelingState[] = [];
@@ -87,6 +85,12 @@ class InputCauseOfFeeling extends React.Component<
                 selectedCauseOfFeelingStates.push(state);
             }
         }
+
+        // 2回押せないように
+        this.setState({
+            isSendButtonDisabled: true
+        });
+
         requests
             .inputDataRequest(
                 selectedFeelingState,
@@ -100,9 +104,9 @@ class InputCauseOfFeeling extends React.Component<
                     console.log(r);
                 }
             })
-            .finally(() => {
+            .then(() => {
                 this.setState({
-                    isSend: false
+                    isSend: true
                 });
             });
     };
@@ -169,9 +173,10 @@ class InputCauseOfFeeling extends React.Component<
                     <Fab
                         variant='extended'
                         color='primary'
-                        aria-label='Add'
+                        aria-label='send'
                         className={classes.sendButton}
                         onClick={this.handleSendButtonClick}
+                        disabled={this.state.isSendButtonDisabled}
                     >
                         <NavigationIcon className={classes.extendedIcon} />
                         {this.state.sendButtonText}
@@ -180,7 +185,12 @@ class InputCauseOfFeeling extends React.Component<
             </div>
         ) : (
             <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
-                thanks
+                <Typography variant='h5' aria-label='thanks-message1'>
+                    テストのご協力、ありがとうございます！
+                </Typography>
+                <Typography variant='h6' aria-label='thanks-message2'>
+                    お手数ですがアプリを終了してください。
+                </Typography>
             </div>
         );
     }

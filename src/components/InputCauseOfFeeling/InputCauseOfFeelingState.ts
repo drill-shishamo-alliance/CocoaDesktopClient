@@ -5,6 +5,7 @@ type InputCauseOfFeelingState = {
     toggledButtons: boolean[];
     isSend: boolean;
     sendButtonText: string;
+    isSendButtonDisabled: boolean;
 };
 
 export default InputCauseOfFeelingState;
