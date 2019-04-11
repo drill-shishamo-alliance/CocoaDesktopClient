@@ -4,6 +4,7 @@ type InputCauseOfFeelingState = {
     inputCauseOfFeelings: CauseOfFeelingType[];
     toggledButtons: boolean[];
     isSend: boolean;
+    sendButtonText: string;
 };
 
 export default InputCauseOfFeelingState;

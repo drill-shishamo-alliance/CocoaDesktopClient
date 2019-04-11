@@ -6,8 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import styles from './InputCauseOfFeelingStyles';
 import * as classNames from 'classnames';
 import FeelingButton from '../FeelingButtons/FeelingButton';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton';
 import CauseOfFeelingState, {
@@ -16,7 +14,8 @@ import CauseOfFeelingState, {
 import 'src/utils/webkit_properties/webkit_properties.css';
 import InputCauseOfFeelingState from './InputCauseOfFeelingState';
 import CoreApiServiceRequests from 'src/requests/CoreApiRequests';
-
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
 class InputCauseOfFeeling extends React.Component<
     InputCauseOfFeelingProps,
     InputCauseOfFeelingState
@@ -26,7 +25,8 @@ class InputCauseOfFeeling extends React.Component<
         this.state = {
             inputCauseOfFeelings: [],
             toggledButtons: new Array(6),
-            isSend: false
+            isSend: false,
+            sendButtonText: '気分だけ伝える'
         };
     }
 
@@ -38,12 +38,13 @@ class InputCauseOfFeeling extends React.Component<
     public handleCauseOfFeelingButtonClick = (
         toggledCause: CauseOfFeelingType
     ) => () => {
-        const { inputCauseOfFeelings } = this.state;
         const updateInputCauseOfFeelings: CauseOfFeelingType[] = this.state
             .inputCauseOfFeelings;
 
         // 入力された原因がinputCauseOfFeelingsにあるか探す
-        const index = inputCauseOfFeelings.findIndex(c => c === toggledCause);
+        const index = updateInputCauseOfFeelings.findIndex(
+            c => c === toggledCause
+        );
 
         if (index >= 0) {
             // あった場合は消す
@@ -54,8 +55,23 @@ class InputCauseOfFeeling extends React.Component<
         }
 
         this.setState({
-            inputCauseOfFeelings: updateInputCauseOfFeelings
+            inputCauseOfFeelings: [
+                ...this.state.inputCauseOfFeelings.slice(
+                    this.state.inputCauseOfFeelings.length
+                ),
+                ...updateInputCauseOfFeelings
+            ]
         });
+        console.log(this.state.inputCauseOfFeelings);
+        if (this.state.inputCauseOfFeelings.length > 0) {
+            this.setState({
+                sendButtonText: '気分と理由を伝える'
+            });
+        } else {
+            this.setState({
+                sendButtonText: '気分だけ伝える'
+            });
+        }
     };
 
     public handleSendButtonClick = () => {
@@ -110,9 +126,12 @@ class InputCauseOfFeeling extends React.Component<
                         feelingType={selectedFeelingState.feelingType}
                     />
                     <Typography
-                        variant='h4'
+                        variant='h5'
                         aria-label='question'
-                    >{`を選んだ理由は？`}</Typography>
+                        className={classes.margin}
+                    >
+                        {`理由があったら教えてください。`}
+                    </Typography>
                 </div>
                 <div
                     className={classNames(
@@ -147,15 +166,16 @@ class InputCauseOfFeeling extends React.Component<
                     />
                 </div>
                 <div aria-label='send-button'>
-                    <Button
-                        variant='contained'
-                        color='primary' // これを入れると文字が白くなる
+                    <Fab
+                        variant='extended'
+                        color='primary'
+                        aria-label='Add'
                         className={classes.sendButton}
                         onClick={this.handleSendButtonClick}
                     >
-                        送信する
-                        <Icon>send</Icon>
-                    </Button>
+                        <NavigationIcon className={classes.extendedIcon} />
+                        {this.state.sendButtonText}
+                    </Fab>
                 </div>
             </div>
         ) : (
