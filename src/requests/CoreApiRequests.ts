@@ -6,7 +6,7 @@ import CauseOfFeelingState from 'src/models/states/CauseOfFeelingState';
 export const localAddress = 'http://127.0.0.1:8080';
 export const devAddress = 'http://13.78.26.191:8080';
 
-const userName = 'test-user-niioka';
+const userName = 'test-user-okubo';
 console.log(`【Debug用】ユーザー名：${userName}`);
 export default class CoreApiServiceRequests {
     public inputDataRequest(
