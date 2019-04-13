@@ -163,25 +163,24 @@ const CauseOfFeelingButton = (props: CauseOfFeelingButtonProps) => {
 
     return (
         <div className={classes.buttonContainer}>
-            <div aria-label={causeOfFeelingButtonProps.ariaLabel}>
-                <IconButton
-                    onClick={onClick(causeOfFeelingType)}
-                    style={{ padding: 0 }}
-                >
-                    <FormControlLabel
-                        className={classes.button}
-                        control={
-                            <Checkbox
-                                icon={causeOfFeelingButtonProps.IconComponent}
-                                checkedIcon={
-                                    causeOfFeelingButtonProps.ClickedIconComponent
-                                }
-                            />
-                        }
-                        label=''
-                    />
-                </IconButton>
-            </div>
+            <IconButton
+                onClick={onClick(causeOfFeelingType)}
+                style={{ padding: 0 }}
+                aria-label={causeOfFeelingButtonProps.ariaLabel}
+            >
+                <FormControlLabel
+                    className={classes.button}
+                    control={
+                        <Checkbox
+                            icon={causeOfFeelingButtonProps.IconComponent}
+                            checkedIcon={
+                                causeOfFeelingButtonProps.ClickedIconComponent
+                            }
+                        />
+                    }
+                    label=''
+                />
+            </IconButton>
             <Typography
                 variant='body2'
                 className={classes.detailText}

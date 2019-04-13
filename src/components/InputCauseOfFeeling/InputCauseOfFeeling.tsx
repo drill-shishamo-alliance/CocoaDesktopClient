@@ -16,6 +16,7 @@ import InputCauseOfFeelingState from './InputCauseOfFeelingState';
 import CoreApiServiceRequests from 'src/requests/CoreApiRequests';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+
 class InputCauseOfFeeling extends React.Component<
     InputCauseOfFeelingProps,
     InputCauseOfFeelingState
@@ -99,16 +100,19 @@ class InputCauseOfFeeling extends React.Component<
             .then(result => {
                 if (result instanceof Error) {
                     console.log(result);
-                } else {
+                } else if (result) {
                     const r = result.getResult();
                     console.log(r);
+                } else {
+                    throw new Error('result is undefined');
                 }
             })
             .then(() => {
                 this.setState({
                     isSend: true
                 });
-            });
+            })
+            .catch(e => console.log(e));
     };
 
     public render() {
@@ -169,19 +173,17 @@ class InputCauseOfFeeling extends React.Component<
                         onClick={this.handleCauseOfFeelingButtonClick}
                     />
                 </div>
-                <div aria-label='send-button'>
-                    <Fab
-                        variant='extended'
-                        color='primary'
-                        aria-label='send'
-                        className={classes.sendButton}
-                        onClick={this.handleSendButtonClick}
-                        disabled={this.state.isSendButtonDisabled}
-                    >
-                        <NavigationIcon className={classes.extendedIcon} />
-                        {this.state.sendButtonText}
-                    </Fab>
-                </div>
+                <Fab
+                    variant='extended'
+                    color='primary'
+                    aria-label='send-button'
+                    className={classes.sendButton}
+                    onClick={this.handleSendButtonClick}
+                    disabled={this.state.isSendButtonDisabled}
+                >
+                    <NavigationIcon className={classes.extendedIcon} />
+                    {this.state.sendButtonText}
+                </Fab>
             </div>
         ) : (
             <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
