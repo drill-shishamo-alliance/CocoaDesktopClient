@@ -16,6 +16,7 @@ import InputCauseOfFeelingState from './InputCauseOfFeelingState';
 import CoreApiServiceRequests from 'src/requests/CoreApiRequests';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import { Result, InputDataResponse } from 'src/models/protos/core-api_pb';
 class InputCauseOfFeeling extends React.Component<
     InputCauseOfFeelingProps,
     InputCauseOfFeelingState
@@ -99,16 +100,19 @@ class InputCauseOfFeeling extends React.Component<
             .then(result => {
                 if (result instanceof Error) {
                     console.log(result);
-                } else {
+                } else if (result instanceof InputDataResponse) {
                     const r = result.getResult();
                     console.log(r);
+                } else {
+                    throw new Error('result is undefined');
                 }
             })
             .then(() => {
                 this.setState({
                     isSend: true
                 });
-            });
+            })
+            .catch(e => console.log(e));
     };
 
     public render() {
