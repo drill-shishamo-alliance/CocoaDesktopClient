@@ -27,6 +27,7 @@ class InputCauseOfFeeling extends React.Component<
             inputCauseOfFeelings: [],
             toggledButtons: new Array(6),
             isSend: false,
+            inputCauseOfFeelingsText: '理由があったら教えてください。',
             sendButtonText: '気分だけ伝える',
             isSendButtonDisabled: false
         };
@@ -67,10 +68,12 @@ class InputCauseOfFeeling extends React.Component<
 
         if (this.state.inputCauseOfFeelings.length > 0) {
             this.setState({
+                inputCauseOfFeelingsText: '他にもあれば教えてください。',
                 sendButtonText: '気分と理由を伝える'
             });
         } else {
             this.setState({
+                inputCauseOfFeelingsText: '理由があったら教えてください。',
                 sendButtonText: '気分だけ伝える'
             });
         }
@@ -138,7 +141,7 @@ class InputCauseOfFeeling extends React.Component<
                         aria-label='question'
                         className={classes.margin}
                     >
-                        {`理由があったら教えてください。`}
+                        {this.state.inputCauseOfFeelingsText}
                     </Typography>
                 </div>
                 <div
