@@ -50,7 +50,7 @@ class InputCauseOfFeeling extends React.Component<
 
         if (index >= 0) {
             // あった場合は消す
-            updateInputCauseOfFeelings.splice(index);
+            updateInputCauseOfFeelings.splice(index, 1);
         } else {
             // なかった場合は追加する
             updateInputCauseOfFeelings.push(toggledCause);
