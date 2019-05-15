@@ -41,9 +41,13 @@ describe('InputCauseFeeling', () => {
                 />
             );
 
+            const amountOfWorkButton = getByLabelText('amount-of-work-button');
             const question = getByLabelText('question');
-
+            // 原因が選択されていない時
             expect(question.textContent).toBe('理由があったら教えてください。');
+            // 原因を選択
+            fireEvent.click(amountOfWorkButton);
+            expect(question.textContent).toBe('他にもあれば教えてください。');
         });
 
         test('原因ボタンが6つ描画される', () => {
