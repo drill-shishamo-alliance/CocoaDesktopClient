@@ -17,11 +17,11 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 570,
-    height: 320,
-    resizable: false,
+    height: 340,
+    resizable: false
     // transparent: true,
-    frame: false,
-    toolbar: false
+    // frame: false,
+    // toolbar: false
   })
   // and load the index.html of the app.
   const startUrl =
