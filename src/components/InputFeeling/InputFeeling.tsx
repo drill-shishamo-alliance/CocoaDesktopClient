@@ -5,7 +5,6 @@ import InputFeelingProps from './InputFeelingProps';
 import styles from './InputFeelingStyles';
 import { FeelingType } from '../../models/states/FeelingState';
 import FeelingButton from '../FeelingButtons/FeelingButton';
-import * as classNames from 'classnames';
 import 'src/utils/webkit_properties/webkit_properties.css';
 
 class InputFeeling extends React.Component<InputFeelingProps> {
@@ -23,17 +22,11 @@ class InputFeeling extends React.Component<InputFeelingProps> {
     public render() {
         const { classes } = this.props;
         return (
-            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+            <div className={classes.root}>
                 <Typography variant='h5' aria-label='question'>
                     今日の気分はどうですか？
                 </Typography>
-                <div
-                    className={classNames(
-                        classes.buttons,
-                        'WebkitAppRegionDrag'
-                    )}
-                    aria-label='buttons'
-                >
+                <div className={classes.buttons} aria-label='buttons'>
                     <FeelingButton
                         feelingType={FeelingType.VERY_SATISFIED}
                         handleClick={this.handleClick}

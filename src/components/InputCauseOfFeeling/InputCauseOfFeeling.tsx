@@ -4,7 +4,6 @@ import InputCauseOfFeelingProps from './InputCauseOfFeelingProps';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './InputCauseOfFeelingStyles';
-import * as classNames from 'classnames';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton';
@@ -123,7 +122,7 @@ class InputCauseOfFeeling extends React.Component<
         const { isSend } = this.state;
 
         return !isSend ? (
-            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+            <div className={classes.root}>
                 <div aria-label='back-button'>
                     <IconButton
                         className={classes.backButton}
@@ -144,13 +143,7 @@ class InputCauseOfFeeling extends React.Component<
                         {this.state.inputCauseOfFeelingsText}
                     </Typography>
                 </div>
-                <div
-                    className={classNames(
-                        classes.buttons,
-                        'WebkitAppRegionDrag'
-                    )}
-                    aria-label='buttons'
-                >
+                <div className={classes.buttons} aria-label='buttons'>
                     <CauseOfFeelingButton
                         causeOfFeelingType={CauseOfFeelingType.AMOUNT_OF_WORK}
                         onClick={this.handleCauseOfFeelingButtonClick}
@@ -189,7 +182,7 @@ class InputCauseOfFeeling extends React.Component<
                 </Fab>
             </div>
         ) : (
-            <div className={classNames(classes.root, 'WebkitAppRegionDrag')}>
+            <div className={classes.root}>
                 <Typography variant='h5' aria-label='thanks-message1'>
                     テストのご協力、ありがとうございます！
                 </Typography>
