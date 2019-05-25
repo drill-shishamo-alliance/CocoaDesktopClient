@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ScreenState, { ScreenType } from './states/ScreenState';
+import InputCauseOfFeeling from './containers/InputCauseOfFeeling/InputCauseOfFeeling';
+import InputFeeling from './containers/InputFeeling/InputFeeling';
+import Paper from '@material-ui/core/Paper';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export interface AppConnectedProps {
+  screenState: ScreenState;
+}
+
+class App extends React.Component<AppConnectedProps> {
+  public render() {
+    const { screenState } = this.props;
+    return (
+      <Paper className='App'>
+        {screenState.screenType === ScreenType.INPUT_FEELING && (
+          <InputFeeling aria-label='input-feeling-screen' />
+        )}
+        {screenState.screenType === ScreenType.INPUT_CAUSE_OF_FEELING && (
+          <InputCauseOfFeeling aria-label='input-cause-of-feeling-screen' />
+        )}
+      </Paper>
+    );
+  }
 }
 
 export default App;
