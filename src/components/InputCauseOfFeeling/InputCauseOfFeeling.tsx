@@ -10,14 +10,17 @@ import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton'
 import CauseOfFeelingState, { CauseOfFeelingType } from '../../states/CauseOfFeelingState';
 import 'src/utils/webkit_properties/webkit_properties.css';
 import InputCauseOfFeelingState from './InputCauseOfFeelingState';
-import CoreApiServiceRequests from '../../requests/CoreApiRequests';
+import CocoaApi from 'src/interfaces/apis/CocoaApi';
+import ICocoaApi from 'src/interfaces/apis/interface/ICocoaApi';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import { InputData } from 'src/interfaces/apis/model/InputDataModel';
 
 class InputCauseOfFeeling extends React.Component<
   InputCauseOfFeelingProps,
   InputCauseOfFeelingState
 > {
+  private _cocoaApi: ICocoaApi;
   constructor(props: InputCauseOfFeelingProps) {
     super(props);
     this.state = {
@@ -28,6 +31,7 @@ class InputCauseOfFeeling extends React.Component<
       sendButtonText: '気分だけ伝える',
       isSendButtonDisabled: false,
     };
+    this._cocoaApi = new CocoaApi();
   }
 
   public handleBackButtonClick = () => {
@@ -71,7 +75,6 @@ class InputCauseOfFeeling extends React.Component<
 
   public handleSendButtonClick = () => {
     const { selectedFeelingState, causeOfFeelingStates } = this.props;
-    const requests = new CoreApiServiceRequests();
     const selectedCauseOfFeelingStates: CauseOfFeelingState[] = [];
     for (const inputType of this.state.inputCauseOfFeelings) {
       const state = causeOfFeelingStates.find(c => c.type === inputType);
@@ -85,24 +88,27 @@ class InputCauseOfFeeling extends React.Component<
       isSendButtonDisabled: true,
     });
 
-    requests
-      .inputDataRequest(selectedFeelingState, selectedCauseOfFeelingStates)
-      .then(result => {
-        if (result instanceof Error) {
-          console.log(result);
-        } else if (result) {
-          const r = result.getResult();
-          console.log(r);
-        } else {
-          throw new Error('result is undefined');
-        }
-      })
-      .then(() => {
-        this.setState({
-          isSend: true,
-        });
-      })
-      .catch(e => console.log(e));
+    var inputData: InputData = {};
+
+    this._cocoaApi.postInputData();
+    // requests
+    //   .postInputData(selectedFeelingState, selectedCauseOfFeelingStates)
+    //   .then(result => {
+    //     if (result instanceof Error) {
+    //       console.log(result);
+    //     } else if (result) {
+    //       const r = result.getResult();
+    //       console.log(r);
+    //     } else {
+    //       throw new Error('result is undefined');
+    //     }
+    //   })
+    //   .then(() => {
+    //     this.setState({
+    //       isSend: true,
+    //     });
+    //   })
+    //   .catch(e => console.log(e));
   };
 
   public render() {
