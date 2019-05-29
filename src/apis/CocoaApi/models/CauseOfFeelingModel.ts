@@ -1,4 +1,4 @@
-export interface CauseofFeelingModel {
+export interface GetCauseofFeelingsResponse {
   cause_of_feelings: [
     {
       cause_of_feeling_id: number;
