@@ -4,6 +4,7 @@ import { InputDataParams, InputDataResponse } from './models/InputDataModel';
 import { GetCauseofFeelingsResponse } from './models/CauseOfFeelingModel';
 import { GetFeelingsResponse } from './models/FeelingModels';
 import FeelingState from 'src/states/FeelingState';
+import CauseOfFeelingState from 'src/states/CauseOfFeelingState';
 
 export const localAddress = 'http://127.0.0.1:8080';
 export const devAddress = 'http://13.78.26.191:8080';
@@ -47,6 +48,20 @@ export default class CocoaApi implements ICocoaApi {
     } catch {
       throw new Error('Catch error at GET:/causeoffeeings');
     }
+  }
+
+  public mapGetCauseOfFeelingsResponseToCauses(
+    response: GetCauseofFeelingsResponse
+  ): CauseOfFeelingState[] {
+    const causes: CauseOfFeelingState[] = response.cause_of_feelings.map(
+      c =>
+        ({
+          id: c.cause_of_feeling_id,
+          name: c.name,
+        } as CauseOfFeelingState)
+    );
+
+    return causes;
   }
 
   public async postInputData(params: InputDataParams) {
