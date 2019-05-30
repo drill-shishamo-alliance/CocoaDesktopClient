@@ -12,7 +12,8 @@ const api = new CocoaApi();
 
 export function* getFeelingsSaga(action: ReturnType<typeof getFellings.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.getFeelings>> = yield call(
-    api.getFeelings
+    api.getFeelings,
+    action.payload
   );
 
   if (response.status === 200 && response.data) {
@@ -29,7 +30,8 @@ export function* getFeelingsSaga(action: ReturnType<typeof getFellings.request>)
 
 export function* getCausesSaga(action: ReturnType<typeof getCauses.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.getCauseOfFeelings>> = yield call(
-    api.getCauseOfFeelings
+    api.getCauseOfFeelings,
+    action.payload
   );
 
   if (response.status === 200 && response.data) {

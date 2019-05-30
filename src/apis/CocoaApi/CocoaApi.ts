@@ -18,9 +18,13 @@ export default class CocoaApi implements ICocoaApi {
     });
   }
 
-  public async getFeelings() {
+  public async getFeelings(respondent: string) {
     try {
-      const response: AxiosResponse<GetFeelingsResponse> = await this.axios.get('/feelings');
+      const response: AxiosResponse<GetFeelingsResponse> = await this.axios.get('/feelings', {
+        params: {
+          respondent,
+        },
+      });
       return response;
     } catch {
       throw new Error('Catch error at GET:/feelings');
@@ -39,10 +43,15 @@ export default class CocoaApi implements ICocoaApi {
     return feelings;
   }
 
-  public async getCauseOfFeelings() {
+  public async getCauseOfFeelings(respondent: string) {
     try {
       const response: AxiosResponse<GetCauseofFeelingsResponse> = await this.axios.get(
-        '/causeoffeeings'
+        '/causeoffeeings',
+        {
+          params: {
+            respondent,
+          },
+        }
       );
       return response;
     } catch {

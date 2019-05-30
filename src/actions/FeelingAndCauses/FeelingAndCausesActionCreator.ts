@@ -8,13 +8,13 @@ export const getFellings = createAsyncAction(
   FeelingAndCausesActionType.GET_FEELINGS_REQUEST,
   FeelingAndCausesActionType.GET_FEELINGS_SUCCEEDED,
   FeelingAndCausesActionType.GET_FEELINGS_FAILED
-)<undefined, FeelingState[], Error>();
+)<string, FeelingState[], Error>();
 
 export const getCauses = createAsyncAction(
   FeelingAndCausesActionType.GET_CAUSES_REQUEST,
   FeelingAndCausesActionType.GET_CAUSES_SUCCEEDED,
   FeelingAndCausesActionType.GET_CAUSES_FAILED
-)<undefined, CauseOfFeelingState[], Error>();
+)<string, CauseOfFeelingState[], Error>();
 
 export const postFeelingAndCauses = createAsyncAction(
   FeelingAndCausesActionType.POST_FEELING_AND_CAUSES_REQUEST,
