@@ -44,9 +44,27 @@ export function* getCausesSaga(action: ReturnType<typeof getCauses.request>) {
   }
 }
 
+export function* postFeelingAndCausesSaga(action: ReturnType<typeof postFeelingAndCauses.request>) {
+  const response: PromiseGenericType<ReturnType<typeof api.postInputData>> = yield call(
+    api.postInputData,
+    action.payload
+  );
+
+  if (response.status === 200) {
+    yield put(postFeelingAndCauses.success());
+  } else if (response.status === 400) {
+    yield console.log(response.data.result);
+    yield put(postFeelingAndCauses.failure());
+  } else {
+    yield console.log(response.data.result);
+    yield put(postFeelingAndCauses.failure());
+  }
+}
+
 const feelingAndCausesSagas = [
   takeLatest(FeelingAndCausesActionType.GET_FEELINGS_REQUEST, getFeelingsSaga),
   takeLatest(FeelingAndCausesActionType.GET_CAUSES_REQUEST, getCausesSaga),
+  takeLatest(FeelingAndCausesActionType.POST_FEELING_AND_CAUSES_REQUEST, postFeelingAndCausesSaga),
 ];
 
 export default feelingAndCausesSagas;

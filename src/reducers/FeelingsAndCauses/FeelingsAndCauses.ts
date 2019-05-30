@@ -23,6 +23,16 @@ const feelingAndCauses = (
         ...state,
         causes: [...state.causes, ...action.payload],
       };
+    case FeelingAndCausesActionType.POST_FEELING_AND_CAUSES_SUCCEEDED:
+      return {
+        ...state,
+        isInputDataSucceeded: true,
+      };
+    case FeelingAndCausesActionType.POST_FEELING_AND_CAUSES_FAILED:
+      return {
+        ...state,
+        isInputDataSucceeded: false,
+      };
     default:
       return state;
   }
