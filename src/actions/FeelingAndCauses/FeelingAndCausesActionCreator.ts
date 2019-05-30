@@ -1,7 +1,7 @@
 import FeelingAndCausesActionType from './FeelingAndCausesActionType';
 import { createAsyncAction } from 'typesafe-actions';
-import FeelingState from 'src/states/FeelingState';
-import CauseOfFeelingState from 'src/states/CauseOfFeelingState';
+import { FeelingState } from 'src/states/FeelingState';
+import { CauseOfFeelingState } from 'src/states/CauseOfFeelingState';
 import { InputDataParams } from 'src/apis/CocoaApi/models/InputDataModel';
 
 export const getFellings = createAsyncAction(

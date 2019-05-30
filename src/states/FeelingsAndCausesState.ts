@@ -1,5 +1,5 @@
-import FeelingState from './FeelingState';
-import CauseOfFeelingState from './CauseOfFeelingState';
+import { FeelingState } from './FeelingState';
+import { CauseOfFeelingState } from './CauseOfFeelingState';
 
 type FeelingAndCausesState = {
   feelings: FeelingState[];

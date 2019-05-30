@@ -10,8 +10,8 @@ import * as ScreenActionCreators from '../../actions/Screen/ScreenActionCreator'
 import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: RootState): InputCauseOfFeelingConnectedProps => ({
-  selectedFeelingState: state.screenState.feelingState,
-  causeOfFeelingStates: state.couseOfFeelingState,
+  selectedFeelingId: state.screenState.selectedFeelingId,
+  causeOfFeelingStates: state.feelingAndCausesState.causes,
 });
 
 const mapDispatchToProps = (

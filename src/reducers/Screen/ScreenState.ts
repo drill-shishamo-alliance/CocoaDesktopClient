@@ -1,15 +1,10 @@
-import ScreenState, { ScreenType } from '../../states/ScreenState';
-import ScreenAction from '../../actions/Screen/ScreenAction';
-import ScreenActionType from '../../actions/Screen/ScreenActionType';
-import { FeelingType } from '../../states/FeelingState';
+import { ScreenState, ScreenType } from 'src/states/ScreenState';
+import ScreenAction from 'src/actions/Screen/ScreenAction';
+import ScreenActionType from 'src/actions/Screen/ScreenActionType';
 
-export const initialState: ScreenState = {
+export const initialState = {
   screenType: ScreenType.INPUT_FEELING,
-  feelingState: {
-    feelingId: 5,
-    feelingType: FeelingType.VERY_SATISFIED,
-    name: '',
-  },
+  selectedFeelingId: 0,
 };
 
 const screenState = (state: ScreenState = initialState, action: ScreenAction): ScreenState => {
@@ -23,7 +18,7 @@ const screenState = (state: ScreenState = initialState, action: ScreenAction): S
       return {
         ...state,
         screenType: ScreenType.INPUT_CAUSE_OF_FEELING,
-        feelingState: action.payload,
+        selectedFeelingId: action.payload.id,
       };
     default:
       return state;

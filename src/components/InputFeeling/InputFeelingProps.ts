@@ -1,6 +1,6 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './InputFeelingStyles';
-import FeelingState from 'src/states/FeelingState';
+import { FeelingState } from 'src/states/FeelingState';
 
 export type InputFeelingDispatchProps = {
   switchInputCauseOfFeeling: (feelingState: FeelingState) => void;

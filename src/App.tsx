@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ScreenState, { ScreenType } from './states/ScreenState';
+import { ScreenState, ScreenType } from './states/ScreenState';
 import InputCauseOfFeeling from './containers/InputCauseOfFeeling/InputCauseOfFeeling';
 import InputFeeling from './containers/InputFeeling/InputFeeling';
 import Paper from '@material-ui/core/Paper';

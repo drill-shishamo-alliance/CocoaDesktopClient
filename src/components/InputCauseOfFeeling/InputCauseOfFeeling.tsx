@@ -7,32 +7,24 @@ import styles from './InputCauseOfFeelingStyles';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import CauseOfFeelingButton from '../CauseOfFeelingButtons/CauseOfFeelingButton';
-import CauseOfFeelingState, { CauseOfFeelingType } from '../../states/CauseOfFeelingState';
+import { CauseOfFeelingState, CauseOfFeelingType } from '../../states/CauseOfFeelingState';
 import 'src/utils/webkit_properties/webkit_properties.css';
 import InputCauseOfFeelingState from './InputCauseOfFeelingState';
-import CocoaApi from 'src/interfaces/apis/CocoaApi';
-import ICocoaApi from 'src/interfaces/apis/interface/ICocoaApi';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
-import { InputData } from 'src/interfaces/apis/model/InputDataModel';
 
 class InputCauseOfFeeling extends React.Component<
   InputCauseOfFeelingProps,
   InputCauseOfFeelingState
 > {
-  private _cocoaApi: ICocoaApi;
-  constructor(props: InputCauseOfFeelingProps) {
-    super(props);
-    this.state = {
-      inputCauseOfFeelings: [],
-      toggledButtons: new Array(6),
-      isSend: false,
-      inputCauseOfFeelingsText: '理由があったら教えてください。',
-      sendButtonText: '気分だけ伝える',
-      isSendButtonDisabled: false,
-    };
-    this._cocoaApi = new CocoaApi();
-  }
+  readonly state = {
+    inputCauseOfFeelings: [],
+    toggledButtons: new Array(6),
+    isSend: false,
+    inputCauseOfFeelingsText: '理由があったら教えてください。',
+    sendButtonText: '気分だけ伝える',
+    isSendButtonDisabled: false,
+  };
 
   public handleBackButtonClick = () => {
     const { switchInputFeeling } = this.props;
@@ -74,10 +66,10 @@ class InputCauseOfFeeling extends React.Component<
   };
 
   public handleSendButtonClick = () => {
-    const { selectedFeelingState, causeOfFeelingStates } = this.props;
+    const { causeOfFeelingStates } = this.props;
     const selectedCauseOfFeelingStates: CauseOfFeelingState[] = [];
     for (const inputType of this.state.inputCauseOfFeelings) {
-      const state = causeOfFeelingStates.find(c => c.type === inputType);
+      const state = causeOfFeelingStates.find(c => c.id === inputType);
       if (state) {
         selectedCauseOfFeelingStates.push(state);
       }
@@ -87,32 +79,10 @@ class InputCauseOfFeeling extends React.Component<
     this.setState({
       isSendButtonDisabled: true,
     });
-
-    var inputData: InputData = {};
-
-    this._cocoaApi.postInputData();
-    // requests
-    //   .postInputData(selectedFeelingState, selectedCauseOfFeelingStates)
-    //   .then(result => {
-    //     if (result instanceof Error) {
-    //       console.log(result);
-    //     } else if (result) {
-    //       const r = result.getResult();
-    //       console.log(r);
-    //     } else {
-    //       throw new Error('result is undefined');
-    //     }
-    //   })
-    //   .then(() => {
-    //     this.setState({
-    //       isSend: true,
-    //     });
-    //   })
-    //   .catch(e => console.log(e));
   };
 
   public render() {
-    const { classes, selectedFeelingState } = this.props;
+    const { classes, selectedFeelingId } = this.props;
     const { isSend } = this.state;
 
     return !isSend ? (
@@ -123,7 +93,7 @@ class InputCauseOfFeeling extends React.Component<
           </IconButton>
         </div>
         <div className={classes.questionContainer}>
-          <FeelingButton feelingType={selectedFeelingState.feelingType} />
+          <FeelingButton feelingType={selectedFeelingId} />
           <Typography variant='h5' aria-label='question' className={classes.margin}>
             {this.state.inputCauseOfFeelingsText}
           </Typography>

@@ -3,8 +3,8 @@ import ICocoaApi from './ICocoaApi';
 import { InputDataParams, InputDataResponse } from './models/InputDataModel';
 import { GetCauseofFeelingsResponse } from './models/CauseOfFeelingModel';
 import { GetFeelingsResponse } from './models/FeelingModels';
-import FeelingState from 'src/states/FeelingState';
-import CauseOfFeelingState from 'src/states/CauseOfFeelingState';
+import { FeelingState } from 'src/states/FeelingState';
+import { CauseOfFeelingState } from 'src/states/CauseOfFeelingState';
 
 export const localAddress = 'http://127.0.0.1:8080';
 export const devAddress = 'http://13.78.26.191:8080';

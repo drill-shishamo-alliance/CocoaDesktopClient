@@ -3,16 +3,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import InputFeelingProps from './InputFeelingProps';
 import styles from './InputFeelingStyles';
-import { FeelingType } from '../../states/FeelingState';
 import FeelingButton from '../FeelingButtons/FeelingButton';
 import 'src/utils/webkit_properties/webkit_properties.css';
+import { FeelingType } from 'src/states/FeelingState';
 
 class InputFeeling extends React.Component<InputFeelingProps> {
   public handleClick = (feelingType: FeelingType) => (
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
     const { switchInputCauseOfFeeling, feelingStates } = this.props;
-    const index = feelingStates.findIndex(state => state.feelingType === feelingType);
+    const index = feelingStates.findIndex(feeling => feeling.id === feelingType);
 
     switchInputCauseOfFeeling(feelingStates[index]);
   };
