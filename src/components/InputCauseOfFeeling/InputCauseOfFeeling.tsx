@@ -12,13 +12,14 @@ import 'src/utils/webkit_properties/webkit_properties.css';
 import InputCauseOfFeelingState from './InputCauseOfFeelingState';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import { InputDataParams } from 'src/apis/CocoaApi/models/InputDataModel';
 
 class InputCauseOfFeeling extends React.Component<
   InputCauseOfFeelingProps,
   InputCauseOfFeelingState
 > {
   readonly state = {
-    inputCauseOfFeelings: [],
+    inputCauseOfFeelings: new Array<CauseOfFeelingType>(),
     toggledButtons: new Array(6),
     isSend: false,
     inputCauseOfFeelingsText: '理由があったら教えてください。',
@@ -66,7 +67,7 @@ class InputCauseOfFeeling extends React.Component<
   };
 
   public handleSendButtonClick = () => {
-    const { causeOfFeelingStates } = this.props;
+    const { selectedFeelingId, causeOfFeelingStates } = this.props;
     const selectedCauseOfFeelingStates: CauseOfFeelingState[] = [];
     for (const inputType of this.state.inputCauseOfFeelings) {
       const state = causeOfFeelingStates.find(c => c.id === inputType);
@@ -79,6 +80,20 @@ class InputCauseOfFeeling extends React.Component<
     this.setState({
       isSendButtonDisabled: true,
     });
+
+    const causeOfFeelings = this.state.inputCauseOfFeelings.map(cause => ({
+      cause_of_feeling_id: cause,
+    }));
+
+    const params: InputDataParams = {
+      feeling: {
+        feeling_id: selectedFeelingId,
+      },
+      cause_of_feeling: causeOfFeelings,
+      respondent: '',
+    };
+
+    this.props.postFeelingAndCausesRequest(params);
   };
 
   public render() {
