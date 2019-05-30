@@ -9,8 +9,9 @@ let mainWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 680,
+    width: 570,
+    height: 340,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true
     }
