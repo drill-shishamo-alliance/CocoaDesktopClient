@@ -62,12 +62,12 @@ const feelingAndCauses = (
     case FeelingAndCausesActionType.GET_FEELINGS_SUCCEEDED:
       return {
         ...state,
-        feelings: [...state.feelings, ...action.payload],
+        feelings: [...action.payload],
       };
     case FeelingAndCausesActionType.GET_CAUSES_SUCCEEDED:
       return {
         ...state,
-        causes: [...state.causes, ...action.payload],
+        causes: [...action.payload],
       };
     case FeelingAndCausesActionType.POST_FEELING_AND_CAUSES_SUCCEEDED:
       return {
