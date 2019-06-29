@@ -1,9 +1,9 @@
 import AppAction from 'src/actions/App/AppAction';
 import AppActionType from 'src/actions/App/AppActionType';
-import AppState, { PostLogStatus } from 'src/states/App/AppState';
+import AppState from 'src/states/App/AppState';
 
 const initialState: AppState = {
-  postLogStatus: PostLogStatus.NOT_POSTED,
+  isPostLogResultLoading: false,
 };
 
 export default (state: AppState = initialState, action: AppAction): AppState => {
@@ -11,17 +11,17 @@ export default (state: AppState = initialState, action: AppAction): AppState => 
     case AppActionType.POST_FEELING_AND_CAUSES_LOG_REQUEST:
       return {
         ...state,
-        postLogStatus: PostLogStatus.POSTING,
+        isPostLogResultLoading: true,
       };
     case AppActionType.POST_FEELING_AND_CAUSES_LOG_SUCCEEDED:
       return {
         ...state,
-        postLogStatus: PostLogStatus.SUCCEEDED,
+        isPostLogResultLoading: false,
       };
     case AppActionType.POST_FEELING_AND_CAUSES_LOG_FAILED:
       return {
         ...state,
-        postLogStatus: PostLogStatus.FAILED,
+        ...initialState,
       };
     default:
       return state;
