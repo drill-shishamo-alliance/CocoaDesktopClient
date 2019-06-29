@@ -1,87 +1,38 @@
-import axios, { AxiosResponse, AxiosInstance, AxiosStatic } from 'axios';
-import ICocoaApi from './ICocoaApi';
-import { InputDataParams, InputDataResponse } from './models/InputDataModel';
-import { GetCauseofFeelingsResponse } from './models/CauseOfFeelingModel';
-import { GetFeelingsResponse } from './models/FeelingModels';
-import { FeelingState } from 'src/states/FeelingState';
-import { CauseOfFeelingState } from 'src/states/CauseOfFeelingState';
+import axios from 'axios';
+import { PostLogBody, PostLogResponse } from './models/Log';
+import { GetCausesResponse, GetCausesQuery } from './models/Causes';
+import { GetFeelingsResponse, GetFeelingsQuery } from './models/Feelings';
 
-export const localAddress = 'http://127.0.0.1:8080';
-export const devAddress = 'http://13.78.26.191:8080';
-
-export default class CocoaApi implements ICocoaApi {
-  private axios: AxiosInstance;
-
+export default class CocoaApi {
   constructor() {
-    this.axios = axios.create({
-      baseURL: devAddress,
-    });
+    axios.defaults.baseURL = process.env.REACT_APP_COCOA_API_DEV;
   }
 
-  public async getFeelings(respondent: string) {
+  public async getFeelings(query: GetFeelingsQuery) {
     try {
-      const response: AxiosResponse<GetFeelingsResponse> = await this.axios.get('/feelings', {
-        params: {
-          respondent,
-        },
+      return await axios.get<GetFeelingsResponse>('/feelings', {
+        params: query,
       });
-      return response;
-    } catch {
-      throw new Error('Catch error at GET:/feelings');
+    } catch (error) {
+      throw error;
     }
   }
 
-  public mapGetFeelingsResponseToFeelings(response: GetFeelingsResponse): FeelingState[] {
-    const feelings: FeelingState[] = response.feelings.map(
-      f =>
-        ({
-          id: f.feeling_id,
-          name: f.name,
-        } as FeelingState)
-    );
-
-    return feelings;
-  }
-
-  public async getCauseOfFeelings(respondent: string) {
+  public async getCauses(query: GetCausesQuery) {
     try {
-      const response: AxiosResponse<GetCauseofFeelingsResponse> = await this.axios.get(
-        '/causeoffeeings',
-        {
-          params: {
-            respondent,
-          },
-        }
-      );
-      return response;
-    } catch {
-      throw new Error('Catch error at GET:/causeoffeeings');
+      return await axios.get<GetCausesResponse>('/causes', {
+        params: query,
+      });
+    } catch (error) {
+      throw error;
     }
   }
 
-  public mapGetCauseOfFeelingsResponseToCauses(
-    response: GetCauseofFeelingsResponse
-  ): CauseOfFeelingState[] {
-    const causes: CauseOfFeelingState[] = response.cause_of_feelings.map(
-      c =>
-        ({
-          id: c.cause_of_feeling_id,
-          name: c.name,
-        } as CauseOfFeelingState)
-    );
-
-    return causes;
-  }
-
-  public async postInputData(params: InputDataParams) {
+  public async postLog(body: PostLogBody) {
     try {
-      const response: AxiosResponse<InputDataResponse> = await this.axios.post(
-        '/inputdata',
-        params
-      );
-      return response;
-    } catch {
-      throw new Error('Catch error at POST:/inputdata');
+      return await axios.post<PostLogResponse>('/log', body);
+    } catch (error) {
+      throw error;
     }
   }
 }
