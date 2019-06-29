@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PostLogBody, PostLogResponse } from './models/Log';
+import { PostLogRequest, PostLogResponse } from './models/Log';
 import { GetCausesResponse, GetCausesQuery } from './models/Causes';
 import { GetFeelingsResponse, GetFeelingsQuery } from './models/Feelings';
 
@@ -28,7 +28,7 @@ export default class CocoaApi {
     }
   }
 
-  public async postLog(body: PostLogBody) {
+  public async postLog(body: PostLogRequest) {
     try {
       return await axios.post<PostLogResponse>('/log', body);
     } catch (error) {
