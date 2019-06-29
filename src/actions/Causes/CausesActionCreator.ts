@@ -2,7 +2,7 @@ import { createAsyncAction, createStandardAction } from 'typesafe-actions';
 import { GetCausesResponse, GetCausesQuery, Cause } from 'src/apis/CocoaApi/models/Causes';
 import CausesActionType from './CausesActionType';
 
-export const getFellings = createAsyncAction(
+export const getCauses = createAsyncAction(
   CausesActionType.GET_CAUSES_REQUEST,
   CausesActionType.GET_CAUSES_SUCCEEDED,
   CausesActionType.GET_CAUSES_FAILED
