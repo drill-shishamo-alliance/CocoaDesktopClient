@@ -2,7 +2,7 @@ import axios from 'axios';
 import { PostLoginRequest, PostLoginResponse } from './models/Login';
 import { PostSignupRequest, PostSignupResponse } from './models/Signup';
 
-export default class SimpleAuthenticateApi {
+class SimpleAuthenticateApi {
   constructor() {
     axios.defaults.baseURL = process.env.REACT_APP_COCOA_SIMPLE_AUTHENTICATE_API;
   }
@@ -23,3 +23,5 @@ export default class SimpleAuthenticateApi {
     }
   }
 }
+
+export default new SimpleAuthenticateApi();

@@ -1,10 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { PromiseGenericType } from 'src/utils/types/TypeUtils';
-import CocoaApi from 'src/apis/CocoaApi/CocoaApi';
+import api from 'src/apis/CocoaApi/CocoaApi';
 import AppActionType from 'src/actions/App/AppActionType';
 import { postFeelingAndCausesLog } from 'src/actions/App/AppActionCreator';
-
-const api = new CocoaApi();
 
 function* postFeelingAndCausesLogSaga(action: ReturnType<typeof postFeelingAndCausesLog.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.postLog>> = yield call(
