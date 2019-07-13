@@ -12,17 +12,25 @@ const CauseOfFeelingButton: React.FC<Props> = props => {
   const { classes, handleClick, cause } = props;
 
   const materialIcon = (iconName: string, clicked: boolean) => (
-    <i className={classNames('material-icons', classes.icon, clicked && classes.clickedIconColor)}>
+    <i
+      className={classNames(
+        'material-icons',
+        classes.materialIcon,
+        clicked && classes.clickedIconColor
+      )}
+    >
       {iconName}
     </i>
   );
-  const svgIcon = (src: string) => <img src={src} className={classes.icon} />;
+
+  const svgIcon = (src: string) => <img src={src} className={classes.svgIcon} />;
 
   const icon = cause.icon_path
-    ? materialIcon(cause.name, false)
+    ? materialIcon(cause.icon_path, false)
     : cause.default_color && svgIcon(cause.default_color);
+
   const checkedIcon = cause.icon_path
-    ? materialIcon(cause.name, true)
+    ? materialIcon(cause.icon_path, true)
     : cause.clicked_color && svgIcon(cause.clicked_color);
 
   return (

@@ -11,9 +11,12 @@ const styles = (theme: Theme) =>
     button: {
       margin: 0,
     },
-    icon: {
+    svgIcon: {
       width: 48,
       height: 48,
+    },
+    materialIcon: {
+      fontSize: 55,
     },
     detailText: {
       marginTop: -10,
