@@ -23,6 +23,7 @@ class CausesForm extends React.Component<Props, State> {
 
   componentWillMount() {
     this.props.getCausesRequest({ access_token: '' });
+    this.props.clearSelectedCauses();
   }
 
   public handleBackButtonClick = () => {

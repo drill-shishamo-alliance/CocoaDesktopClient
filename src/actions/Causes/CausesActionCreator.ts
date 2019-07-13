@@ -9,3 +9,7 @@ export const getCauses = createAsyncAction(
 )<GetCausesQuery, GetCausesResponse, undefined>();
 
 export const selectCause = createStandardAction(CausesActionType.TOGGLE_CAUSES)<Cause>();
+
+export const clearSelectedCauses = createStandardAction(CausesActionType.CLEAR_SELECTED_CAUSES)<
+  undefined
+>();

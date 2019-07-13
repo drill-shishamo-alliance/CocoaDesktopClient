@@ -49,6 +49,7 @@ export default (state: CausesState = initialState, action: CausesAction): Causes
         return {
           ...state,
           edits: {
+            ...state.edits,
             selectedCauses: [
               ...state.edits.selectedCauses.slice(0, existIndex),
               ...state.edits.selectedCauses.slice(existIndex + 1),
@@ -56,6 +57,14 @@ export default (state: CausesState = initialState, action: CausesAction): Causes
           },
         };
       }
+    case CausesActionType.CLEAR_SELECTED_CAUSES:
+      return {
+        ...state,
+        edits: {
+          ...state.edits,
+          selectedCauses: [],
+        },
+      };
     default:
       return state;
   }

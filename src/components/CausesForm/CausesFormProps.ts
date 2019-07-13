@@ -19,6 +19,7 @@ export type CausesFormDispatchProps = {
   postFeelingAndCausesLogRequest: (body: PostLogRequest) => void;
   selectCause: (cause: Cause) => void;
   getCausesRequest: (query: GetCausesQuery) => void;
+  clearSelectedCauses: () => void;
 };
 
 type CausesFormProps = WithStyles<typeof styles> &
