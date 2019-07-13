@@ -18,9 +18,12 @@ export default (state: FeelingsState = initialState, action: FeelingsAction): Fe
         isFetching: true,
       };
     case FeelingsActionType.GET_FEELINGS_SUCCEEDED:
+      // weightの降順にソート
+      const sortedFeelings = action.payload.feelings.sort((a, b) => b.weight - a.weight);
+
       return {
         ...state,
-        lists: action.payload.feelings,
+        lists: sortedFeelings,
         isFetching: false,
       };
     case FeelingsActionType.GET_FEELINGS_FAILED:
