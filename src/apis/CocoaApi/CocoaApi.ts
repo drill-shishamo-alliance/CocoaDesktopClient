@@ -1,13 +1,9 @@
-import axios from 'axios';
+import axios from './Axios';
 import { PostLogRequest, PostLogResponse } from './models/Log';
 import { GetCausesResponse, GetCausesQuery } from './models/Causes';
 import { GetFeelingsResponse, GetFeelingsQuery } from './models/Feelings';
 
 class CocoaApi {
-  constructor() {
-    axios.defaults.baseURL = process.env.REACT_APP_COCOA_API_DEV;
-  }
-
   public async getFeelings(query: GetFeelingsQuery) {
     try {
       return await axios.get<GetFeelingsResponse>('/feelings', {
