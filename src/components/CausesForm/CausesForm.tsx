@@ -18,8 +18,6 @@ import FeelingText from '../FeelingText/FeelingText';
 class CausesForm extends React.Component<Props, State> {
   readonly state = {
     toggledButtons: new Array<boolean>(6),
-    inputCauseOfFeelingsText: '理由があったら教えてください。',
-    sendButtonText: '気分だけ伝える',
     isSendButtonDisabled: false,
   };
 
@@ -33,19 +31,8 @@ class CausesForm extends React.Component<Props, State> {
   };
 
   public handleCauseButtonClick = (cause: Cause) => () => {
-    const { selectCause, causesState } = this.props;
+    const { selectCause } = this.props;
     selectCause(cause);
-    if (causesState.edits.selectedCauses.length > 0) {
-      this.setState({
-        inputCauseOfFeelingsText: '他にもあれば教えてください。',
-        sendButtonText: '気分と理由を伝える',
-      });
-    } else {
-      this.setState({
-        inputCauseOfFeelingsText: '理由があったら教えてください。',
-        sendButtonText: '気分だけ伝える',
-      });
-    }
   };
 
   public handleSendButtonClick = () => {
@@ -70,7 +57,7 @@ class CausesForm extends React.Component<Props, State> {
     const causeIds = selectedCauses.map(c => c.id);
 
     const body: PostLogRequest = {
-      access_token: '',
+      access_token: 'desktop_test_token',
       feeling_id: feelingId,
       cause_ids: causeIds,
     };
@@ -82,6 +69,12 @@ class CausesForm extends React.Component<Props, State> {
   public render() {
     const { classes, feelingsState, causesState } = this.props;
     const { selectedFeeling } = feelingsState.edits;
+    const { selectedCauses } = causesState.edits;
+    const questionMessage =
+      selectedCauses.length <= 0
+        ? '理由があったら教えてください。'
+        : '他にもあれば教えてください。';
+    const sendButtonText = selectedCauses.length <= 0 ? '気分だけ伝える' : '気分と理由を伝える';
 
     return (
       <div className={classes.root}>
@@ -98,7 +91,7 @@ class CausesForm extends React.Component<Props, State> {
             </div>
           )}
           <Typography variant='h5' aria-label='question' className={classes.margin}>
-            {this.state.inputCauseOfFeelingsText}
+            {questionMessage}
           </Typography>
         </div>
         <div className={classes.buttons} aria-label='buttons'>
@@ -115,7 +108,7 @@ class CausesForm extends React.Component<Props, State> {
           disabled={this.state.isSendButtonDisabled}
         >
           <NavigationIcon className={classes.extendedIcon} />
-          {this.state.sendButtonText}
+          {sendButtonText}
         </Fab>
       </div>
     );
