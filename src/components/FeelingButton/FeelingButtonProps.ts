@@ -1,14 +1,13 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './FeelingButtonStyles';
-import { FeelingType } from 'src/states/FeelingState';
+import { Feeling } from 'src/apis/CocoaApi/models/Feelings';
 
 type FeelingButtonOwnProps = {
-  handleClick?: (
-    feelingType: FeelingType
-  ) => (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  feelingType: FeelingType;
+  feeling: Feeling;
+  handleClick: (
+    selectedFeeling: Feeling
+  ) => (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
 
 type FeelingButtonProps = WithStyles<typeof styles> & FeelingButtonOwnProps;
-
 export default FeelingButtonProps;
