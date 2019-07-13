@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import InputCauseOfFeeling from 'src/containers/InputCauseOfFeeling/InputCauseOfFeeling';
-import InputFeeling from 'src/containers/InputFeeling/InputFeeling';
+import FeelingsForm from 'src/containers/FeelingsForm/FeelingsForm';
+import CausesForm from 'src/containers/CausesForm/CausesForm';
+import ThanksForm from 'src/components/ThanksForm/ThanksForm';
 import Paper from '@material-ui/core/Paper';
 import { ScreenType } from './ScreenType';
 
@@ -14,15 +15,23 @@ class App extends React.Component<AppProps, AppState> {
   readonly state = {
     screenType: ScreenType.FEELINGS_FORM,
   };
+
+  public switchScreen = (screenType: ScreenType) => {
+    this.setState({
+      screenType,
+    });
+  };
+
   public render() {
     return (
       <Paper className='App'>
         {this.state.screenType === ScreenType.FEELINGS_FORM && (
-          <InputFeeling aria-label='input-feeling-screen' />
+          <FeelingsForm aria-label='input-feeling-screen' switchScreen={this.switchScreen} />
         )}
         {this.state.screenType === ScreenType.CAUSES_FORM && (
-          <InputCauseOfFeeling aria-label='input-cause-of-feeling-screen' />
+          <CausesForm switchScreen={this.switchScreen} />
         )}
+        {this.state.screenType === ScreenType.THANKS_FORM && <ThanksForm />}
       </Paper>
     );
   }
