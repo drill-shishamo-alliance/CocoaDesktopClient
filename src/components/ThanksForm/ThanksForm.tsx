@@ -25,7 +25,7 @@ const ThanksForm: React.FC<WithStyles<typeof styles>> = props => (
       テストのご協力、ありがとうございます！
     </Typography>
     <Typography variant='h6' aria-label='thanks-message2'>
-      お手数ですがアプリを終了してください。
+      お手数ですがアプリを終了してください。🙇‍
     </Typography>
   </div>
 );
