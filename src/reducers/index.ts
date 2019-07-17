@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import screenState from './Screen/ScreenState';
-import feelingState from './Feeling/FeelingState';
-import couseOfFeelingState from './CauseOfFeeling/CauseOfFeelingState';
+import FeelingsState from './Feelings/FeelingsState';
+import CausesState from './Causes/CausesState';
+import AppState from './App/AppState';
+import UserState from './User/UserState';
 
 const rootReducer = combineReducers({
-    screenState,
-    feelingState,
-    couseOfFeelingState
+  app: AppState,
+  user: UserState,
+  feelings: FeelingsState,
+  causes: CausesState,
 });
 
 export default rootReducer;

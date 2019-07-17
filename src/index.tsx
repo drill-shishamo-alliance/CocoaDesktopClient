@@ -1,30 +1,31 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
-import App from './containers/App/App';
+import App from 'src/components/App/App';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 
 const composeEnhancers = composeWithDevTools({
-    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 });
 
 const logger = createLogger();
-const middleware = [logger];
-const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(...middleware))
-);
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [logger, sagaMiddleware];
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root') as HTMLElement
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root') as HTMLElement
 );
 
-registerServiceWorker();
+serviceWorker.unregister();
