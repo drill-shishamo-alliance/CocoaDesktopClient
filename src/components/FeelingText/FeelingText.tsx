@@ -6,7 +6,7 @@ import { Feeling } from 'src/apis/CocoaApi/models/Feelings';
 
 const styles = (theme: Theme) =>
   createStyles({
-    detailText: {},
+    detailText: { minWidth: 100 },
   });
 
 type FeelingTextOwnProps = {
@@ -16,10 +16,11 @@ type FeelingTextOwnProps = {
 
 type FeelingTextProps = FeelingTextOwnProps & WithStyles<typeof styles>;
 const FeelingText: React.FC<FeelingTextProps> = props => {
-  const { marginTop } = props;
+  const { marginTop, classes } = props;
   const { name, color } = props.feeling;
   return (
     <Typography
+      className={classes.detailText}
       variant='button'
       aria-label={`${name}-name`}
       style={{ color: color, marginTop: marginTop && marginTop }}
