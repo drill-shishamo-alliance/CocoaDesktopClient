@@ -11,7 +11,9 @@ function* getMoodsSaga(action: ReturnType<typeof getFellings.request>) {
   );
 
   if (response.status === 200 && response.data) {
-    yield put(getFellings.success(response.data));
+    // weightの降順にソート
+    const sortedMoods = response.data.sort((a, b) => b.weight - a.weight);
+    yield put(getFellings.success(sortedMoods));
   } else if (response.status === 400) {
     yield put(getFellings.failure());
   } else {

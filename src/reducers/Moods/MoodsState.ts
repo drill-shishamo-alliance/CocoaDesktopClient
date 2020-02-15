@@ -18,12 +18,9 @@ export default (state: MoodsState = initialState, action: MoodsAction): MoodsSta
         isFetching: true,
       };
     case MoodsActionType.GET_MOODS_SUCCEEDED:
-      // weightの降順にソート
-      const sortedMoods = action.payload.moods.sort((a, b) => b.weight - a.weight);
-
       return {
         ...state,
-        lists: sortedMoods,
+        lists: action.payload,
         isFetching: false,
       };
     case MoodsActionType.GET_MOODS_FAILED:

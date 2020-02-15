@@ -4,21 +4,17 @@ import { GetCausesResponse, GetCausesQuery } from './models/Causes';
 import { GetMoodsResponse, GetMoodsQuery } from './models/Moods';
 
 class CocoaApi {
-  public async getMoods(query: GetMoodsQuery) {
+  public async getMoods(_: GetMoodsQuery) {
     try {
-      return await axios.get<GetMoodsResponse>('/moods', {
-        params: query,
-      });
+      return await axios.get<GetMoodsResponse>('/moods');
     } catch (error) {
       throw error;
     }
   }
 
-  public async getCauses(query: GetCausesQuery) {
+  public async getCauses(_: GetCausesQuery) {
     try {
-      return await axios.get<GetCausesResponse>('/causes', {
-        params: query,
-      });
+      return await axios.get<GetCausesResponse>('/causes');
     } catch (error) {
       throw error;
     }

@@ -38,13 +38,5 @@
     "weight": 5,
     "icon_name": "sentiment_very_satisfied",
     "color": "#EF7079"
-  },
-  {
-    "id": "mood_id0",
-    "department_id": 1,
-    "name": "未入力",
-    "weight": 0,
-    "icon_name": "clear",
-    "color": "red"
   }
 ]
