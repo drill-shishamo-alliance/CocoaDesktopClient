@@ -1,6 +1,6 @@
 const express = require("express");
 const moods = require("./jsons/moods.json")
-const causes = ("./jsons/causes.json")
+const causes = require("./jsons/causes.json")
 
 const app = express();
 const port_number = 8000;

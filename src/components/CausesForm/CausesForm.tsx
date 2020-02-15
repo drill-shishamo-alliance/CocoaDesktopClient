@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import BackIcon from '@material-ui/icons/KeyboardBackspace';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Fab from '@material-ui/core/Fab';
-import FeelingIcon from '../FeelingIcon/FeelingIcon';
+import MoodIcon from '../MoodIcon/MoodIcon';
 import CauseButton from '../CauseButton/CauseButton';
 import styles from './CausesFormStyles';
 import Props from './CausesFormProps';
@@ -13,7 +13,7 @@ import State from './CausesFormState';
 import { ScreenType } from '../App/ScreenType';
 import { Cause } from 'src/apis/CocoaApi/models/Causes';
 import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
-import FeelingText from '../FeelingText/FeelingText';
+import MoodText from '../MoodText/MoodText';
 
 class CausesForm extends React.Component<Props, State> {
   readonly state = {
@@ -21,14 +21,14 @@ class CausesForm extends React.Component<Props, State> {
     isSendButtonDisabled: false,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getCausesRequest({ access_token: '' });
     this.props.clearSelectedCauses();
   }
 
   public handleBackButtonClick = () => {
     const { switchScreen } = this.props;
-    switchScreen(ScreenType.FEELINGS_FORM);
+    switchScreen(ScreenType.MOODS_FORM);
   };
 
   public handleCauseButtonClick = (cause: Cause) => () => {
@@ -37,8 +37,8 @@ class CausesForm extends React.Component<Props, State> {
   };
 
   public handleSendButtonClick = () => {
-    const { feelingsState, causesState, postFeelingAndCausesLogRequest, switchScreen } = this.props;
-    const { selectedFeeling } = feelingsState.edits;
+    const { moodsState, causesState, postMoodAndCausesLogRequest, switchScreen } = this.props;
+    const { selectedMood } = moodsState.edits;
     const { selectedCauses } = causesState.edits;
 
     // 2回押せないように送信ボタンをDisabled
@@ -46,9 +46,9 @@ class CausesForm extends React.Component<Props, State> {
       isSendButtonDisabled: true,
     });
 
-    // selectedFeelingのundefinedチェック
-    const feelingId = selectedFeeling ? selectedFeeling.id : '';
-    if (feelingId === '') {
+    // selectedMoodのundefinedチェック
+    const moodId = selectedMood ? selectedMood.id : '';
+    if (moodId === '') {
       this.setState({
         isSendButtonDisabled: false,
       });
@@ -59,17 +59,17 @@ class CausesForm extends React.Component<Props, State> {
 
     const body: PostLogRequest = {
       access_token: 'desktop_test_token',
-      feeling_id: feelingId,
+      mood_id: moodId,
       cause_ids: causeIds,
     };
 
-    postFeelingAndCausesLogRequest(body);
+    postMoodAndCausesLogRequest(body);
     switchScreen(ScreenType.THANKS_FORM);
   };
 
   public render() {
-    const { classes, feelingsState, causesState } = this.props;
-    const { selectedFeeling } = feelingsState.edits;
+    const { classes, moodsState, causesState } = this.props;
+    const { selectedMood } = moodsState.edits;
     const { selectedCauses } = causesState.edits;
     const questionMessage =
       selectedCauses.length <= 0
@@ -85,10 +85,10 @@ class CausesForm extends React.Component<Props, State> {
           </IconButton>
         </div>
         <div className={classes.questionContainer}>
-          {selectedFeeling && (
-            <div className={classes.feelingIconContainer}>
-              <FeelingIcon feeling={selectedFeeling} />
-              <FeelingText feeling={selectedFeeling} />
+          {selectedMood && (
+            <div className={classes.moodIconContainer}>
+              <MoodIcon mood={selectedMood} />
+              <MoodText mood={selectedMood} />
             </div>
           )}
           <Typography variant='h5' aria-label='question' className={classes.margin}>

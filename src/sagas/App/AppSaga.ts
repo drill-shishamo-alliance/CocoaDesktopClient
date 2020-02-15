@@ -2,24 +2,24 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { PromiseGenericType } from 'src/utils/types/TypeUtils';
 import api from 'src/apis/CocoaApi/CocoaApi';
 import AppActionType from 'src/actions/App/AppActionType';
-import { postFeelingAndCausesLog } from 'src/actions/App/AppActionCreator';
+import { postMoodAndCausesLog } from 'src/actions/App/AppActionCreator';
 
-function* postFeelingAndCausesLogSaga(action: ReturnType<typeof postFeelingAndCausesLog.request>) {
+function* postMoodAndCausesLogSaga(action: ReturnType<typeof postMoodAndCausesLog.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.postLog>> = yield call(
     api.postLog,
     action.payload
   );
 
   if (response.status === 200 && response.data) {
-    yield put(postFeelingAndCausesLog.success(response.data));
+    yield put(postMoodAndCausesLog.success(response.data));
   } else if (response.status === 400) {
-    yield put(postFeelingAndCausesLog.failure());
+    yield put(postMoodAndCausesLog.failure());
   } else {
-    yield put(postFeelingAndCausesLog.failure());
+    yield put(postMoodAndCausesLog.failure());
   }
 }
 
 const appSagas = [
-  takeLatest(AppActionType.POST_FEELING_AND_CAUSES_LOG_REQUEST, postFeelingAndCausesLogSaga),
+  takeLatest(AppActionType.POST_MOOD_AND_CAUSES_LOG_REQUEST, postMoodAndCausesLogSaga),
 ];
 export default appSagas;

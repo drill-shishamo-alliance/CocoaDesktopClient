@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import FeelingsForm from 'src/containers/FeelingsForm/FeelingsForm';
+import MoodsForm from 'src/containers/MoodsForm/MoodsForm';
 import CausesForm from 'src/containers/CausesForm/CausesForm';
 import ThanksForm from 'src/components/ThanksForm/ThanksForm';
 import Paper from '@material-ui/core/Paper';
@@ -13,7 +13,7 @@ type AppState = {
 
 class App extends React.Component<AppProps, AppState> {
   readonly state = {
-    screenType: ScreenType.FEELINGS_FORM,
+    screenType: ScreenType.MOODS_FORM,
   };
 
   public switchScreen = (screenType: ScreenType) => {
@@ -25,8 +25,8 @@ class App extends React.Component<AppProps, AppState> {
   public render() {
     return (
       <Paper className='App'>
-        {this.state.screenType === ScreenType.FEELINGS_FORM && (
-          <FeelingsForm aria-label='input-feeling-screen' switchScreen={this.switchScreen} />
+        {this.state.screenType === ScreenType.MOODS_FORM && (
+          <MoodsForm aria-label='input-mood-screen' switchScreen={this.switchScreen} />
         )}
         {this.state.screenType === ScreenType.CAUSES_FORM && (
           <CausesForm switchScreen={this.switchScreen} />

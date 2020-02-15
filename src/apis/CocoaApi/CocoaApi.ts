@@ -1,12 +1,12 @@
 import axios from './Axios';
 import { PostLogRequest, PostLogResponse } from './models/Log';
 import { GetCausesResponse, GetCausesQuery } from './models/Causes';
-import { GetFeelingsResponse, GetFeelingsQuery } from './models/Feelings';
+import { GetMoodsResponse, GetMoodsQuery } from './models/Moods';
 
 class CocoaApi {
-  public async getFeelings(query: GetFeelingsQuery) {
+  public async getMoods(query: GetMoodsQuery) {
     try {
-      return await axios.get<GetFeelingsResponse>('/feelings', {
+      return await axios.get<GetMoodsResponse>('/moods', {
         params: query,
       });
     } catch (error) {

@@ -1,4 +1,4 @@
-export type Feeling = {
+export type Mood = {
   id: string;
   name: string;
   weight: number;
@@ -6,10 +6,10 @@ export type Feeling = {
   color: string;
 };
 
-export type GetFeelingsResponse = {
-  feelings: Feeling[];
+export type GetMoodsResponse = {
+  moods: Mood[];
 };
 
-export type GetFeelingsQuery = {
+export type GetMoodsQuery = {
   access_token: string;
 };

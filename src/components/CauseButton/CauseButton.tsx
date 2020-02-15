@@ -8,7 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import styles from './CauseButtonStyles';
 import Props from './CauseButtonProps';
 
-const CauseOfFeelingButton: React.FC<Props> = props => {
+const CauseOfMoodButton: React.FC<Props> = props => {
   const { classes, handleClick, cause } = props;
 
   const materialIcon = (iconName: string, clicked: boolean) => (
@@ -49,4 +49,4 @@ const CauseOfFeelingButton: React.FC<Props> = props => {
   );
 };
 
-export default withStyles(styles)(CauseOfFeelingButton);
+export default withStyles(styles)(CauseOfMoodButton);

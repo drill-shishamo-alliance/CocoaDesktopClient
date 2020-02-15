@@ -2,22 +2,22 @@ import React from 'react';
 import { WithStyles, withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { Theme, createStyles } from '@material-ui/core/styles';
-import { Feeling } from 'src/apis/CocoaApi/models/Feelings';
+import { Mood } from 'src/apis/CocoaApi/models/Moods';
 
 const styles = (theme: Theme) =>
   createStyles({
     detailText: {},
   });
 
-type FeelingTextOwnProps = {
-  feeling: Feeling;
+type MoodTextOwnProps = {
+  mood: Mood;
   marginTop?: number;
 };
 
-type FeelingTextProps = FeelingTextOwnProps & WithStyles<typeof styles>;
-const FeelingText: React.FC<FeelingTextProps> = props => {
+type MoodTextProps = MoodTextOwnProps & WithStyles<typeof styles>;
+const MoodText: React.FC<MoodTextProps> = props => {
   const { marginTop } = props;
-  const { name, color } = props.feeling;
+  const { name, color } = props.mood;
   return (
     <Typography
       variant='button'
@@ -29,4 +29,4 @@ const FeelingText: React.FC<FeelingTextProps> = props => {
   );
 };
 
-export default withStyles(styles)(FeelingText);
+export default withStyles(styles)(MoodText);

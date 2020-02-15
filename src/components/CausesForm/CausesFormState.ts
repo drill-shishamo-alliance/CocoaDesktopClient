@@ -1,6 +1,6 @@
-type InputCauseOfFeelingState = {
+type InputCauseOfMoodState = {
   toggledButtons: boolean[];
   isSendButtonDisabled: boolean;
 };
 
-export default InputCauseOfFeelingState;
+export default InputCauseOfMoodState;

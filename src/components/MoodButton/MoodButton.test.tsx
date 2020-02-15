@@ -1,19 +1,19 @@
 import * as React from 'react';
 /*
 import { render, cleanup, fireEvent } from 'react-testing-library';
-import FeelingButton from './FeelingButton';
-import { FeelingType } from 'src/states/FeelingState';
+import MoodButton from './MoodButton';
+import { MoodType } from 'src/states/MoodState';
 
 afterEach(cleanup);
 
-describe('FeelingButton', () => {
+describe('MoodButton', () => {
   const handleClickSpy = jest.fn();
 
   describe('UIの仕様', () => {
-    describe('feelingTypeによって適切にボタンとテキストが描画される', () => {
-      test('feelingtype=VERY_DISSATISFIEDのとき「最悪」ボタンとテキストが正しく描画される', () => {
+    describe('moodTypeによって適切にボタンとテキストが描画される', () => {
+      test('moodtype=VERY_DISSATISFIEDのとき「最悪」ボタンとテキストが正しく描画される', () => {
         const { getByLabelText } = render(
-          <FeelingButton feelingType={FeelingType.VERY_DISSATISFIED} />
+          <MoodButton moodType={MoodType.VERY_DISSATISFIED} />
         );
         const veryDissatisfiedButton = getByLabelText('very-dissatisfied-button');
         const veryDissatisfiedText = getByLabelText('very-dissatisfied-text');
@@ -24,8 +24,8 @@ describe('FeelingButton', () => {
         expect(veryDissatisfiedText.textContent).toBe('最悪');
       });
 
-      test('feelingtype=DISSATISFIEDのとき「悪い」ボタンとテキストが正しく描画される', () => {
-        const { getByLabelText } = render(<FeelingButton feelingType={FeelingType.DISSATISFIED} />);
+      test('moodtype=DISSATISFIEDのとき「悪い」ボタンとテキストが正しく描画される', () => {
+        const { getByLabelText } = render(<MoodButton moodType={MoodType.DISSATISFIED} />);
         const dissatisfiedButton = getByLabelText('dissatisfied-button');
         const dissatisfiedText = getByLabelText('dissatisfied-text');
 
@@ -35,8 +35,8 @@ describe('FeelingButton', () => {
         expect(dissatisfiedText.textContent).toBe('悪い');
       });
 
-      test('feelingtype=VERY_NORMALのとき「普通」ボタンとテキストが正しく描画される', () => {
-        const { getByLabelText } = render(<FeelingButton feelingType={FeelingType.NORMAL} />);
+      test('moodtype=VERY_NORMALのとき「普通」ボタンとテキストが正しく描画される', () => {
+        const { getByLabelText } = render(<MoodButton moodType={MoodType.NORMAL} />);
         const normalButton = getByLabelText('normal-button');
         const normalText = getByLabelText('normal-text');
 
@@ -46,8 +46,8 @@ describe('FeelingButton', () => {
         expect(normalText.textContent).toBe('普通');
       });
 
-      test('feelingtype=SATISFIEDのとき「良い」ボタンとテキストが正しく描画される', () => {
-        const { getByLabelText } = render(<FeelingButton feelingType={FeelingType.SATISFIED} />);
+      test('moodtype=SATISFIEDのとき「良い」ボタンとテキストが正しく描画される', () => {
+        const { getByLabelText } = render(<MoodButton moodType={MoodType.SATISFIED} />);
         const satisfiedButton = getByLabelText('satisfied-button');
         const satisfiedText = getByLabelText('satisfied-text');
 
@@ -57,9 +57,9 @@ describe('FeelingButton', () => {
         expect(satisfiedText.textContent).toBe('良い');
       });
 
-      test('feelingtype=VERY_SATISFIEDのとき「最高」ボタンとテキストが正しく描画される', () => {
+      test('moodtype=VERY_SATISFIEDのとき「最高」ボタンとテキストが正しく描画される', () => {
         const { getByLabelText } = render(
-          <FeelingButton feelingType={FeelingType.VERY_SATISFIED} />
+          <MoodButton moodType={MoodType.VERY_SATISFIED} />
         );
         const verySatisfiedButton = getByLabelText('very-satisfied-button');
         const verySatisfiedText = getByLabelText('very-satisfied-text');
@@ -73,7 +73,7 @@ describe('FeelingButton', () => {
       describe('handleClickの有無によるUIの変化', () => {
         test('handleClickがPropsで渡された場合、disabled=false', () => {
           const { getByLabelText } = render(
-            <FeelingButton feelingType={FeelingType.VERY_SATISFIED} handleClick={handleClickSpy} />
+            <MoodButton moodType={MoodType.VERY_SATISFIED} handleClick={handleClickSpy} />
           );
           const button = getByLabelText('very-satisfied-button') as HTMLButtonElement;
 
@@ -83,7 +83,7 @@ describe('FeelingButton', () => {
 
         test('handleClickがPropsで渡されなかった場合、disabled=true', () => {
           const { getByLabelText } = render(
-            <FeelingButton feelingType={FeelingType.VERY_SATISFIED} />
+            <MoodButton moodType={MoodType.VERY_SATISFIED} />
           );
           const button = getByLabelText('very-satisfied-button') as HTMLButtonElement;
 
@@ -96,14 +96,14 @@ describe('FeelingButton', () => {
 
   describe('Integration', () => {
     describe('ボタンを押したとき', () => {
-      test('親から受け取ったfeelingTypeがhandleClickの引数に設定される', () => {
-        const feelingType: FeelingType = FeelingType.VERY_DISSATISFIED;
+      test('親から受け取ったmoodTypeがhandleClickの引数に設定される', () => {
+        const moodType: MoodType = MoodType.VERY_DISSATISFIED;
         const { getByLabelText } = render(
-          <FeelingButton feelingType={feelingType} handleClick={handleClickSpy} />
+          <MoodButton moodType={moodType} handleClick={handleClickSpy} />
         );
         const veryDissatisfiedButton = getByLabelText('very-dissatisfied-button');
         fireEvent.click(veryDissatisfiedButton);
-        expect(handleClickSpy).toHaveBeenCalledWith(feelingType);
+        expect(handleClickSpy).toHaveBeenCalledWith(moodType);
       });
     });
   });
