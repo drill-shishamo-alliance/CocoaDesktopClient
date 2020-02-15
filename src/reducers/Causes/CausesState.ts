@@ -20,7 +20,7 @@ export default (state: CausesState = initialState, action: CausesAction): Causes
     case CausesActionType.GET_CAUSES_SUCCEEDED:
       return {
         ...state,
-        lists: action.payload.causes,
+        lists: action.payload,
         isFetching: false,
       };
     case CausesActionType.GET_CAUSES_FAILED:
