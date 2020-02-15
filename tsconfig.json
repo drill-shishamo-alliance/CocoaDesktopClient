@@ -20,7 +20,8 @@
     "jsx": "preserve"
   },
   "include": [
-    "src"
+    "src",
+    "mock_server"
   ],
   "extends": "./paths.json"
 }
