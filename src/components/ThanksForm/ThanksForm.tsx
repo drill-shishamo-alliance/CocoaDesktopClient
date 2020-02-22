@@ -22,7 +22,7 @@ const styles = (theme: Theme) =>
 const ThanksForm: React.FC<WithStyles<typeof styles>> = props => (
   <div className={props.classes.root}>
     <Typography variant='h5' aria-label='thanks-message1'>
-      テストのご協力、ありがとうございます！
+      今日も入力ありがとうございます！
     </Typography>
     <Typography variant='h6' aria-label='thanks-message2'>
       お手数ですがアプリを終了してください。🙇‍
