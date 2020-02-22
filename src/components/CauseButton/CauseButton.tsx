@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import styles from './CauseButtonStyles';
 import Props from './CauseButtonProps';
+import { iconMap } from './GetCauseIcon';
 
 const CauseOfMoodButton: React.FC<Props> = props => {
   const { classes, handleClick, cause } = props;
@@ -25,13 +26,13 @@ const CauseOfMoodButton: React.FC<Props> = props => {
 
   const svgIcon = (src: string) => <img src={src} className={classes.svgIcon} />;
 
-  const icon = cause.icon_path
-    ? materialIcon(cause.icon_path, false)
-    : cause.default_color && svgIcon(cause.default_color);
+  const icon = iconMap[cause.name].icon_path
+    ? materialIcon(iconMap[cause.name].icon_path, false)
+    : iconMap[cause.name].default && svgIcon(iconMap[cause.name].default);
 
-  const checkedIcon = cause.icon_path
-    ? materialIcon(cause.icon_path, true)
-    : cause.clicked_color && svgIcon(cause.clicked_color);
+  const checkedIcon = iconMap[cause.name].icon_path
+    ? materialIcon(iconMap[cause.name].icon_path, true)
+    : iconMap[cause.name].clicked && svgIcon(iconMap[cause.name].clicked);
 
   return (
     <div className={classes.buttonContainer}>
