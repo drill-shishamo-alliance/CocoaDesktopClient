@@ -1,7 +1,7 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './CausesFormStyles';
 import CausesState from 'src/states/Causes/CausesState';
-import FeelingsState from 'src/states/Feelings/FeelingsState';
+import MoodsState from 'src/states/Moods/MoodsState';
 import { ScreenType } from '../App/ScreenType';
 import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
 import { Cause, GetCausesQuery } from 'src/apis/CocoaApi/models/Causes';
@@ -11,12 +11,12 @@ type CausesFormOwnProps = {
 };
 
 export type CausesFormConnectedProps = {
-  feelingsState: FeelingsState;
+  moodsState: MoodsState;
   causesState: CausesState;
 };
 
 export type CausesFormDispatchProps = {
-  postFeelingAndCausesLogRequest: (body: PostLogRequest) => void;
+  postMoodAndCausesLogRequest: (body: PostLogRequest) => void;
   selectCause: (cause: Cause) => void;
   getCausesRequest: (query: GetCausesQuery) => void;
   clearSelectedCauses: () => void;

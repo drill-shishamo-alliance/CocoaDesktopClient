@@ -8,17 +8,17 @@ const initialState: AppState = {
 
 export default (state: AppState = initialState, action: AppAction): AppState => {
   switch (action.type) {
-    case AppActionType.POST_FEELING_AND_CAUSES_LOG_REQUEST:
+    case AppActionType.POST_MOOD_AND_CAUSES_LOG_REQUEST:
       return {
         ...state,
         isPostLogResultLoading: true,
       };
-    case AppActionType.POST_FEELING_AND_CAUSES_LOG_SUCCEEDED:
+    case AppActionType.POST_MOOD_AND_CAUSES_LOG_SUCCEEDED:
       return {
         ...state,
         isPostLogResultLoading: false,
       };
-    case AppActionType.POST_FEELING_AND_CAUSES_LOG_FAILED:
+    case AppActionType.POST_MOOD_AND_CAUSES_LOG_FAILED:
       return {
         ...state,
         ...initialState,

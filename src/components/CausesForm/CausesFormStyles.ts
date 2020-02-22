@@ -57,13 +57,13 @@ const styles = (theme: Theme) =>
     extendedIcon: {
       marginRight: theme.spacing.unit,
     },
-    feelingIconContainer: {
+    moodIconContainer: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center' /* 子要素をflexboxにより中央に配置する */,
       alignItems: 'center' /* 子要素をflexboxにより中央に配置する */,
     },
-    feelingText: {
+    moodText: {
       marginTop: -20,
     },
   });

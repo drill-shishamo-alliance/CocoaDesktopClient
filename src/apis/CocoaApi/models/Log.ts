@@ -1,6 +1,6 @@
 export type PostLogRequest = {
   access_token: string;
-  feeling_id: string;
+  mood_id: string;
   cause_ids: string[];
 };
 
