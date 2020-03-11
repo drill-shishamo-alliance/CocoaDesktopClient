@@ -65,7 +65,7 @@
     "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "electron": "^5.0.1",
-    "electron-builder": "^20.40.2",
+    "electron-builder": "^22.4.0",
     "google-protobuf": "^3.8.0-rc.1",
     "grpc-web": "^1.0.4",
     "husky": "^2.3.0",
