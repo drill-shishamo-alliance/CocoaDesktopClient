@@ -4,10 +4,11 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const isDev = require('electron-is-dev')
+const autoLaunch = require('auto-launch')
 const ipcMain = electron.ipcMain
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   mainWindow = new BrowserWindow({
     width: 570,
     height: 340,
@@ -28,6 +29,18 @@ function createWindow () {
 }
 
 app.on('ready', createWindow)
+
+app.on('ready', () => {
+  const launcher = new autoLaunch({
+    name: 'cocoa-desktop',
+    path: app.getPath('exe')
+  })
+
+  launcher.isEnabled().then(isEnable => {
+    if (isEnable) return;
+    launcher.enable();
+  })
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
