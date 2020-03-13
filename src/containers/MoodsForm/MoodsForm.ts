@@ -1,14 +1,14 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import RootState from 'src/states';
-import MoodsForm from 'src/components/MoodsForm/MoodsFrom';
+import RootState from '../../states';
+import MoodsForm from '../../components/MoodsForm/MoodsFrom';
 import {
   MoodsFormConnectedProps,
   MoodsFormDispatchProps,
-} from 'src/components/MoodsForm/MoodsFormProps';
-import { Mood, GetMoodsQuery } from 'src/apis/CocoaApi/models/Moods';
-import { selectMood, getFellings } from 'src/actions/Moods/ActionCreator';
-import MoodsAction from 'src/actions/Moods/Action';
+} from '../../components/MoodsForm/MoodsFormProps';
+import { Mood, GetMoodsQuery } from '../../apis/CocoaApi/models/Moods';
+import { selectMood, getFellings } from '../../actions/Moods/ActionCreator';
+import MoodsAction from '../../actions/Moods/Action';
 
 const mapStateToProps = (state: RootState): MoodsFormConnectedProps => ({
   moods: state.moods.lists,

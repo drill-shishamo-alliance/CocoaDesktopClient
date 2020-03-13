@@ -1,8 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { PromiseGenericType } from 'src/utils/types/TypeUtils';
-import api from 'src/apis/SimpleAuthenticateApi/SimpleAuthenticateApi';
-import UserActionType from 'src/actions/User/UserActionType';
-import { postLogin } from 'src/actions/User/UserActionCreator';
+import { PromiseGenericType } from '../../utils/types/TypeUtils';
+import api from '../../apis/SimpleAuthenticateApi/SimpleAuthenticateApi';
+import UserActionType from '../../actions/User/UserActionType';
+import { postLogin } from '../../actions/User/UserActionCreator';
 
 function* postLoginSaga(action: ReturnType<typeof postLogin.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.postLogin>> = yield call(

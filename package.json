@@ -30,6 +30,7 @@
     "test": "rescripts test",
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-dev:windows": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "package:mac": "yarn build && electron-builder --mac --x64",
     "package:windows": "yarn build && electron-builder --win --x64",
     "package:linux": "yarn build && electron-builder --linux --x64",

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import MoodsForm from 'src/containers/MoodsForm/MoodsForm';
-import CausesForm from 'src/containers/CausesForm/CausesForm';
-import ThanksForm from 'src/components/ThanksForm/ThanksForm';
+import MoodsForm from '../../containers/MoodsForm/MoodsForm';
+import CausesForm from '../../containers/CausesForm/CausesForm';
+import ThanksForm from '../../components/ThanksForm/ThanksForm';
 import Paper from '@material-ui/core/Paper';
 import { ScreenType } from './ScreenType';
 

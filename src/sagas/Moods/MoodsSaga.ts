@@ -1,8 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { PromiseGenericType } from 'src/utils/types/TypeUtils';
-import api from 'src/apis/CocoaApi/CocoaApi';
-import MoodsActionType from 'src/actions/Moods/ActionType';
-import { getFellings } from 'src/actions/Moods/ActionCreator';
+import { PromiseGenericType } from '../../utils/types/TypeUtils';
+import api from '../../apis/CocoaApi/CocoaApi';
+import MoodsActionType from '../../actions/Moods/ActionType';
+import { getFellings } from '../../actions/Moods/ActionCreator';
 
 function* getMoodsSaga(action: ReturnType<typeof getFellings.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.getMoods>> = yield call(

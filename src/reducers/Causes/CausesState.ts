@@ -1,6 +1,6 @@
-import CausesAction from 'src/actions/Causes/CausesAction';
-import CausesActionType from 'src/actions/Causes/CausesActionType';
-import CausesState from 'src/states/Causes/CausesState';
+import CausesAction from '../../actions/Causes/CausesAction';
+import CausesActionType from '../../actions/Causes/CausesActionType';
+import CausesState from '../../states/Causes/CausesState';
 
 const initialState: CausesState = {
   lists: [],

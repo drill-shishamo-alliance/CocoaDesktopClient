@@ -1,6 +1,6 @@
-import UserAction from 'src/actions/User/UserAction';
-import UserActionType from 'src/actions/User/UserActionType';
-import UserState from 'src/states/User/UserState';
+import UserAction from '../../actions/User/UserAction';
+import UserActionType from '../../actions/User/UserActionType';
+import UserState from '../../states/User/UserState';
 
 const initialState: UserState = {
   accessToken: undefined,

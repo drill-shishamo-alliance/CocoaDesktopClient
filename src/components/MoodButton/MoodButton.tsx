@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MoodButtonProps from './MoodButtonProps';
 import styles from './MoodButtonStyles';
-import MoodIcon from 'src/components/MoodIcon/MoodIcon';
+import MoodIcon from '../../components/MoodIcon/MoodIcon';
 import MoodText from '../MoodText/MoodText';
 
 const MoodButton = (props: MoodButtonProps) => {

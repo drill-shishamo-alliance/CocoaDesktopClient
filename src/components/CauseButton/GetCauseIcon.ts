@@ -1,9 +1,9 @@
-import AmountOfWorkIcon from 'src/assets/default/amountOfWorkIcon.svg';
-import AmountOfWorkClickedIcon from 'src/assets/clicked/amountOfWorkIcon.svg';
-import HumanRelationshipIcon from 'src/assets/default/humanRelationshipIcon.svg';
-import HumanRelationshipClickedIcon from 'src/assets/clicked/humanRelationshipIcon.svg';
-import JobDescriptionIcon from 'src/assets/default/jobDescriptionIcon.svg';
-import JobDescriptionClickedIcon from 'src/assets/clicked/jobDescriptionIcon.svg';
+import AmountOfWorkIcon from '../../assets/default/amountOfWorkIcon.svg';
+import AmountOfWorkClickedIcon from '../../assets/clicked/amountOfWorkIcon.svg';
+import HumanRelationshipIcon from '../../assets/default/humanRelationshipIcon.svg';
+import HumanRelationshipClickedIcon from '../../assets/clicked/humanRelationshipIcon.svg';
+import JobDescriptionIcon from '../../assets/default/jobDescriptionIcon.svg';
+import JobDescriptionClickedIcon from '../../assets/clicked/jobDescriptionIcon.svg';
 
 type IconMap = {
   [key: string]: {

@@ -1,8 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { PromiseGenericType } from 'src/utils/types/TypeUtils';
-import api from 'src/apis/CocoaApi/CocoaApi';
-import CausesActionType from 'src/actions/Causes/CausesActionType';
-import { getCauses } from 'src/actions/Causes/CausesActionCreator';
+import { PromiseGenericType } from '../../utils/types/TypeUtils';
+import api from '../../apis/CocoaApi/CocoaApi';
+import CausesActionType from '../../actions/Causes/CausesActionType';
+import { getCauses } from '../../actions/Causes/CausesActionCreator';
 
 function* getCausesSaga(action: ReturnType<typeof getCauses.request>) {
   const response: PromiseGenericType<ReturnType<typeof api.getCauses>> = yield call(

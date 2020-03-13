@@ -1,6 +1,6 @@
-import AppAction from 'src/actions/App/AppAction';
-import AppActionType from 'src/actions/App/AppActionType';
-import AppState from 'src/states/App/AppState';
+import AppAction from '../../actions/App/AppAction';
+import AppActionType from '../../actions/App/AppActionType';
+import AppState from '../../states/App/AppState';
 
 const initialState: AppState = {
   isPostLogResultLoading: false,

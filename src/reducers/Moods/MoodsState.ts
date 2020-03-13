@@ -1,6 +1,6 @@
-import MoodsAction from 'src/actions/Moods/Action';
-import MoodsActionType from 'src/actions/Moods/ActionType';
-import MoodsState from 'src/states/Moods/MoodsState';
+import MoodsAction from '../../actions/Moods/Action';
+import MoodsActionType from '../../actions/Moods/ActionType';
+import MoodsState from '../../states/Moods/MoodsState';
 
 const initialState: MoodsState = {
   lists: [],
