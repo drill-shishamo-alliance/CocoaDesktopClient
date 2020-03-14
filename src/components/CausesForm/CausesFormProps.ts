@@ -2,7 +2,8 @@ import { WithStyles } from '@material-ui/core';
 import styles from './CausesFormStyles';
 import CausesState from 'src/states/Causes/CausesState';
 import MoodsState from 'src/states/Moods/MoodsState';
-import { ScreenType } from '../App/ScreenType';
+import UserState from 'src/states/User/UserState';
+import { ScreenType } from '../MainPage/ScreenType';
 import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
 import { Cause, GetCausesQuery } from 'src/apis/CocoaApi/models/Causes';
 
@@ -11,6 +12,7 @@ type CausesFormOwnProps = {
 };
 
 export type CausesFormConnectedProps = {
+  employeeId: UserState['employeeId'];
   moodsState: MoodsState;
   causesState: CausesState;
 };

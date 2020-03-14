@@ -1,40 +1,20 @@
 import React from 'react';
-import './App.css';
-import MoodsForm from 'src/containers/MoodsForm/MoodsForm';
-import CausesForm from 'src/containers/CausesForm/CausesForm';
-import ThanksForm from 'src/components/ThanksForm/ThanksForm';
-import Paper from '@material-ui/core/Paper';
-import { ScreenType } from './ScreenType';
+import { useSelector } from 'react-redux';
+import RootState from 'src/states';
+import LoginPage from '../LoginPage/LoginPage';
+import MainPage from '../MainPage/MainPage';
 
-type AppProps = {};
-type AppState = {
-  screenType: ScreenType;
-};
-
-class App extends React.Component<AppProps, AppState> {
-  readonly state = {
-    screenType: ScreenType.MOODS_FORM,
-  };
-
-  public switchScreen = (screenType: ScreenType) => {
-    this.setState({
-      screenType,
-    });
-  };
-
-  public render() {
-    return (
-      <Paper className='App'>
-        {this.state.screenType === ScreenType.MOODS_FORM && (
-          <MoodsForm aria-label='input-mood-screen' switchScreen={this.switchScreen} />
-        )}
-        {this.state.screenType === ScreenType.CAUSES_FORM && (
-          <CausesForm switchScreen={this.switchScreen} />
-        )}
-        {this.state.screenType === ScreenType.THANKS_FORM && <ThanksForm />}
-      </Paper>
-    );
+const App: React.FC = () => {
+  const isLoggedIn = useSelector<RootState, RootState['user']['isLoggedIn']>(
+    state => state.user.isLoggedIn
+  );
+  if (!isLoggedIn) {
+    console.log('return login page');
+    return <LoginPage />;
+  } else {
+    console.log('return main page');
+    return <MainPage />;
   }
-}
+};
 
 export default App;

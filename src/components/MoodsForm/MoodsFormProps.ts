@@ -1,4 +1,4 @@
-import { ScreenType } from 'src/components/App/ScreenType';
+import { ScreenType } from 'src/components/MainPage/ScreenType';
 import styles from './MoodsFormStyles';
 import { WithStyles } from '@material-ui/core';
 import { Mood, GetMoodsQuery } from 'src/apis/CocoaApi/models/Moods';

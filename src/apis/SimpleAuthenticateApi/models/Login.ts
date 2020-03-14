@@ -1,8 +1,9 @@
 export type PostLoginRequest = {
-  login_id: string;
+  id: string;
   password: string;
 };
 
 export type PostLoginResponse = {
-  authorization: string;
+  employee_id: string;
+  department_id: string;
 };

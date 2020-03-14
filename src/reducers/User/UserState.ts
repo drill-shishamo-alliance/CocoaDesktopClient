@@ -3,8 +3,9 @@ import UserActionType from 'src/actions/User/UserActionType';
 import UserState from 'src/states/User/UserState';
 
 const initialState: UserState = {
-  accessToken: undefined,
-  isLoading: false,
+  employeeId: '',
+  departmentId: '',
+  isLoggedIn: false,
 };
 
 export default (state: UserState = initialState, action: UserAction): UserState => {
@@ -12,13 +13,14 @@ export default (state: UserState = initialState, action: UserAction): UserState 
     case UserActionType.POST_LOGIN_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoggedIn: false,
       };
     case UserActionType.POST_LOGIN_SUCCEEDED:
       return {
         ...state,
-        accessToken: action.payload.authorization,
-        isLoading: false,
+        employeeId: action.payload.employee_id,
+        departmentId: action.payload.department_id,
+        isLoggedIn: true,
       };
     case UserActionType.POST_LOGIN_FAILED:
       return {
