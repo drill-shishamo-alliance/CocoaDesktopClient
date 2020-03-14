@@ -18,6 +18,7 @@ import {
 import CausesForm from 'src/components/CausesForm/CausesForm';
 
 const mapStateToProps = (state: RootState): CausesFormConnectedProps => ({
+  employeeId: state.user.employeeId,
   moodsState: state.moods,
   causesState: state.causes,
 });

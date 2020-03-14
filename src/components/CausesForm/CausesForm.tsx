@@ -10,7 +10,7 @@ import CauseButton from '../CauseButton/CauseButton';
 import styles from './CausesFormStyles';
 import Props from './CausesFormProps';
 import State from './CausesFormState';
-import { ScreenType } from '../App/ScreenType';
+import { ScreenType } from '../MainPage/ScreenType';
 import { Cause } from 'src/apis/CocoaApi/models/Causes';
 import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
 import MoodText from '../MoodText/MoodText';
@@ -58,7 +58,7 @@ class CausesForm extends React.Component<Props, State> {
     const causeIds = selectedCauses.map(c => c.id);
 
     const body: PostLogRequest = {
-      access_token: 'desktop_test_token',
+      employee_id: this.props.employeeId,
       mood_id: moodId,
       cause_ids: causeIds,
     };

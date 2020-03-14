@@ -1,5 +1,5 @@
 export type PostLogRequest = {
-  access_token: string;
+  employee_id: string;
   mood_id: string;
   cause_ids: string[];
 };
