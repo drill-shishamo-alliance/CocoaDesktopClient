@@ -10,7 +10,7 @@ function* postLoginSaga(action: ReturnType<typeof postLogin.request>) {
     action.payload
   );
 
-  if (response.status === 200 && response.data) {
+  if (response.status === 201 && response.data) {
     yield put(postLogin.success(response.data));
   } else if (response.status === 400) {
     yield put(postLogin.failure());
