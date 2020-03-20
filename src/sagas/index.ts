@@ -1,9 +1,9 @@
 import { all } from 'redux-saga/effects';
-import appSagas from './App/AppSaga';
-import causesSagas from './Causes/CausesSaga';
-import moodsSagas from './Moods/MoodsSaga';
 import userSagas from './User/UserSaga';
+import { punchlogSagas } from './Punchlog';
+import { moodsSagas } from './Moods';
+import { causesSagas } from './Causes';
 
 export default function* rootSaga() {
-  yield all([...appSagas, ...causesSagas, ...moodsSagas, ...userSagas]);
+  yield all([...punchlogSagas, ...causesSagas, ...moodsSagas, ...userSagas]);
 }

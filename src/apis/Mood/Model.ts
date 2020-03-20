@@ -6,9 +6,3 @@ export type Mood = {
   icon_name: string;
   color: string;
 };
-
-export type GetMoodsResponse = Mood[];
-
-export type GetMoodsQuery = {
-  access_token: string;
-};

@@ -4,6 +4,6 @@ export type PostLoginRequest = {
 };
 
 export type PostLoginResponse = {
-  employee_id: string;
-  department_id: string;
+  employee_id: number;
+  department_id: number;
 };

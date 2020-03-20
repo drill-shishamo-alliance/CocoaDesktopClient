@@ -6,9 +6,3 @@ export type Cause = {
   default_color?: string;
   clicked_color?: string;
 };
-
-export type GetCausesResponse = Cause[];
-
-export type GetCausesQuery = {
-  access_token: string;
-};

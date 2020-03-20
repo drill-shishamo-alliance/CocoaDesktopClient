@@ -1,7 +1,8 @@
 import { ScreenType } from 'src/components/MainPage/ScreenType';
 import styles from './MoodsFormStyles';
 import { WithStyles } from '@material-ui/core';
-import { Mood, GetMoodsQuery } from 'src/apis/CocoaApi/models/Moods';
+import { GetMoodsRequest } from 'src/apis/Mood/GetMoodsApi';
+import { Mood } from 'src/apis/Mood/Model';
 
 type MoodsFormOwnProps = {
   switchScreen: (screenType: ScreenType) => void;
@@ -13,7 +14,7 @@ export type MoodsFormConnectedProps = {
 
 export type MoodsFormDispatchProps = {
   selectMood: (mood: Mood) => void;
-  getMoodsRequest: (query: GetMoodsQuery) => void;
+  getMoodsRequest: (params: GetMoodsRequest) => void;
 };
 
 type MoodsFormProps = MoodsFormOwnProps &

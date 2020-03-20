@@ -1,6 +1,6 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './CauseButtonStyles';
-import { Cause } from 'src/apis/CocoaApi/models/Causes';
+import { Cause } from 'src/apis/Cause/Model';
 
 type CauseOfMoodButtonOwnProps = {
   cause: Cause;
