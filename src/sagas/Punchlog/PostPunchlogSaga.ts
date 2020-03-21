@@ -10,12 +10,11 @@ export function* postPunchlogSaga(action: ReturnType<typeof postPunchlog.request
     action.payload
   );
 
-  // if (response.status === 200 && response.data) {
-  //   yield put(postMoodAndCausesLog.success(response.data));
-  // } else if (response.status === 400) {
-  //   yield put(postMoodAndCausesLog.failure());
-  // } else {
-  //   yield put(postMoodAndCausesLog.failure());
-  // }
-  return response;
+  if (response.status === 201) {
+    yield put(postPunchlog.success());
+  } else if (response.status === 400) {
+    yield put(postPunchlog.failure(new Error('error 400 post punchlog')));
+  } else {
+    yield put(postPunchlog.failure(new Error('error post punchlog')));
+  }
 }

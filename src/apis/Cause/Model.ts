@@ -1,7 +1,7 @@
 export type Cause = {
-  id: string;
+  id: number;
   name: string;
-  department_id: string;
+  department_id: number;
   icon_path?: string;
   default_color?: string;
   clicked_color?: string;

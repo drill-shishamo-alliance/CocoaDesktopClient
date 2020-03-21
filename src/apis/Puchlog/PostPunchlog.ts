@@ -1,9 +1,9 @@
 import Axios from './Axios';
 
 export type PostPunchlogRequest = {
-  employeeId: number;
-  moodId: string;
-  causeIds: string[];
+  employee_id: number;
+  mood_id: number;
+  cause_ids: number[];
 };
 
 export type PostPunchlogResponse = undefined;

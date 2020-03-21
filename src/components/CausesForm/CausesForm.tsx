@@ -57,9 +57,9 @@ class CausesForm extends React.Component<Props, State> {
     const causeIds = selectedCauses.map(c => c.id);
 
     const body: PostPunchlogRequest = {
-      employeeId: this.props.employeeId,
-      moodId: moodId,
-      causeIds: causeIds,
+      employee_id: this.props.employeeId,
+      mood_id: moodId,
+      cause_ids: causeIds,
     };
 
     postMoodAndCausesLogRequest(body);
