@@ -1,6 +1,7 @@
 type UserState = {
-  accessToken?: string;
-  isLoading: boolean;
+  employeeId: string;
+  departmentId: string;
+  isLoggedIn: boolean;
 };
 
 type ReadonlyUserState = Readonly<UserState>;

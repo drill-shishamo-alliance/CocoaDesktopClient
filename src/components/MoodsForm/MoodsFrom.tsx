@@ -5,7 +5,7 @@ import styles from './MoodsFormStyles';
 import Typography from '@material-ui/core/Typography';
 import MoodButton from '../MoodButton/MoodButton';
 import { Mood } from 'src/apis/CocoaApi/models/Moods';
-import { ScreenType } from '../App/ScreenType';
+import { ScreenType } from '../MainPage/ScreenType';
 
 class MoodsForm extends React.Component<Props> {
   componentDidMount() {
