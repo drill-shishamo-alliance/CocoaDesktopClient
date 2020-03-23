@@ -4,14 +4,10 @@ import { withStyles } from '@material-ui/core';
 import styles from './MoodsFormStyles';
 import Typography from '@material-ui/core/Typography';
 import MoodButton from '../MoodButton/MoodButton';
-import { Mood } from 'src/apis/CocoaApi/models/Moods';
 import { ScreenType } from '../MainPage/ScreenType';
+import { Mood } from 'src/apis/Mood/Model';
 
 class MoodsForm extends React.Component<Props> {
-  componentDidMount() {
-    this.props.getMoodsRequest({ access_token: '' });
-  }
-
   public handleMoodClick = (selectedMood: Mood) => (
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
@@ -28,9 +24,11 @@ class MoodsForm extends React.Component<Props> {
           今日の気分はどうですか？
         </Typography>
         <div className={classes.buttons} aria-label='buttons'>
-          {moods.map((f, i) => (
-            <MoodButton key={i} mood={f} handleClick={this.handleMoodClick} />
-          ))}
+          {moods.map((f, i) => {
+            if (f.name !== '未入力') {
+              return <MoodButton key={i} mood={f} handleClick={this.handleMoodClick} />;
+            }
+          })}
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 import { WithStyles } from '@material-ui/core/styles';
-import { Mood } from 'src/apis/CocoaApi/models/Moods';
 import styles from './MoodIconStyles';
+import { Mood } from 'src/apis/Mood/Model';
 
 type MoodIconOwnProps = {
   mood: Mood;

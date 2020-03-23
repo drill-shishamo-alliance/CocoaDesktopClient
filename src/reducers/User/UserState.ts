@@ -3,8 +3,8 @@ import UserActionType from 'src/actions/User/UserActionType';
 import UserState from 'src/states/User/UserState';
 
 const initialState: UserState = {
-  employeeId: '',
-  departmentId: '',
+  employeeId: 0,
+  departmentId: 0,
   isLoggedIn: false,
 };
 

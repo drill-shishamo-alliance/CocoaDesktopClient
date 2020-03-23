@@ -11,9 +11,9 @@ import styles from './CausesFormStyles';
 import Props from './CausesFormProps';
 import State from './CausesFormState';
 import { ScreenType } from '../MainPage/ScreenType';
-import { Cause } from 'src/apis/CocoaApi/models/Causes';
-import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
 import MoodText from '../MoodText/MoodText';
+import { Cause } from 'src/apis/Cause/Model';
+import { PostPunchlogRequest } from 'src/apis/Puchlog/PostPunchlog';
 
 class CausesForm extends React.Component<Props, State> {
   readonly state = {
@@ -22,7 +22,6 @@ class CausesForm extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.props.getCausesRequest({ access_token: '' });
     this.props.clearSelectedCauses();
   }
 
@@ -57,7 +56,7 @@ class CausesForm extends React.Component<Props, State> {
 
     const causeIds = selectedCauses.map(c => c.id);
 
-    const body: PostLogRequest = {
+    const body: PostPunchlogRequest = {
       employee_id: this.props.employeeId,
       mood_id: moodId,
       cause_ids: causeIds,
@@ -96,9 +95,11 @@ class CausesForm extends React.Component<Props, State> {
           </Typography>
         </div>
         <div className={classes.buttons} aria-label='buttons'>
-          {causesState.lists.map((c, i) => (
-            <CauseButton key={i} cause={c} handleClick={this.handleCauseButtonClick(c)} />
-          ))}
+          {causesState.lists.map((c, i) => {
+            if (c.name !== '未選択') {
+              return <CauseButton key={i} cause={c} handleClick={this.handleCauseButtonClick(c)} />;
+            }
+          })}
         </div>
         <Fab
           variant='extended'

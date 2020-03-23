@@ -4,8 +4,9 @@ import CausesState from 'src/states/Causes/CausesState';
 import MoodsState from 'src/states/Moods/MoodsState';
 import UserState from 'src/states/User/UserState';
 import { ScreenType } from '../MainPage/ScreenType';
-import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
-import { Cause, GetCausesQuery } from 'src/apis/CocoaApi/models/Causes';
+import { PostPunchlogRequest } from 'src/apis/Puchlog/PostPunchlog';
+import { getCausesRequest } from 'src/apis/Cause/GetCausesApi';
+import { Cause } from 'src/apis/Cause/Model';
 
 type CausesFormOwnProps = {
   switchScreen: (screenType: ScreenType) => void;
@@ -18,9 +19,9 @@ export type CausesFormConnectedProps = {
 };
 
 export type CausesFormDispatchProps = {
-  postMoodAndCausesLogRequest: (body: PostLogRequest) => void;
+  postMoodAndCausesLogRequest: (body: PostPunchlogRequest) => void;
   selectCause: (cause: Cause) => void;
-  getCausesRequest: (query: GetCausesQuery) => void;
+  getCausesRequest: (params: getCausesRequest) => void;
   clearSelectedCauses: () => void;
 };
 

@@ -1,6 +1,6 @@
 import UserActionType from './UserActionType';
 import { createAsyncAction } from 'typesafe-actions';
-import { PostLoginRequest, PostLoginResponse } from 'src/apis/SimpleAuthenticateApi/models/Login';
+import { PostLoginRequest, PostLoginResponse } from 'src/apis/SimpleAuthenticate/models/Login';
 
 export const postLogin = createAsyncAction(
   UserActionType.POST_LOGIN_REQUEST,

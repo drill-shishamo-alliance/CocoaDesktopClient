@@ -1,5 +1,5 @@
-import CausesAction from 'src/actions/Causes/CausesAction';
-import CausesActionType from 'src/actions/Causes/CausesActionType';
+import CausesAction from 'src/actions/Cause/CausesAction';
+import CausesActionType from 'src/actions/Cause/CausesActionType';
 import CausesState from 'src/states/Causes/CausesState';
 
 const initialState: CausesState = {

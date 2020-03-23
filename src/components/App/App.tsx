@@ -9,10 +9,8 @@ const App: React.FC = () => {
     state => state.user.isLoggedIn
   );
   if (!isLoggedIn) {
-    console.log('return login page');
     return <LoginPage />;
   } else {
-    console.log('return main page');
     return <MainPage />;
   }
 };

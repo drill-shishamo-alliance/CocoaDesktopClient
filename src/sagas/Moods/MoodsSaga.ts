@@ -1,25 +1,25 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import { PromiseGenericType } from 'src/utils/types/TypeUtils';
-import api from 'src/apis/CocoaApi/CocoaApi';
-import MoodsActionType from 'src/actions/Moods/ActionType';
-import { getFellings } from 'src/actions/Moods/ActionCreator';
+import { getMoods } from 'src/actions/Moods/ActionCreator';
+import { getMoodsApi } from 'src/apis/Mood/GetMoodsApi';
 
-function* getMoodsSaga(action: ReturnType<typeof getFellings.request>) {
-  const response: PromiseGenericType<ReturnType<typeof api.getMoods>> = yield call(
-    api.getMoods,
-    action.payload
-  );
+export function* getMoodsSaga(action: ReturnType<typeof getMoods.request>) {
+  try {
+    const response: PromiseGenericType<ReturnType<typeof getMoodsApi>> = yield call(
+      getMoodsApi,
+      action.payload
+    );
 
-  if (response.status === 200 && response.data) {
-    // weightの降順にソート
-    const sortedMoods = response.data.sort((a, b) => b.weight - a.weight);
-    yield put(getFellings.success(sortedMoods));
-  } else if (response.status === 400) {
-    yield put(getFellings.failure());
-  } else {
-    yield put(getFellings.failure());
+    if (response.status === 200 && response.data) {
+      // weightの降順にソート
+      const sortedMoods = response.data.sort((a, b) => b.weight - a.weight);
+      yield put(getMoods.success(sortedMoods));
+    } else if (response.status === 400) {
+      yield put(getMoods.failure());
+    } else {
+      yield put(getMoods.failure());
+    }
+  } catch {
+    yield put(getMoods.failure());
   }
 }
-
-const moodsSagas = [takeLatest(MoodsActionType.GET_MOODS_REQUEST, getMoodsSaga)];
-export default moodsSagas;

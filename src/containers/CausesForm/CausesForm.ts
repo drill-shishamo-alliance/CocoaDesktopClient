@@ -5,17 +5,14 @@ import {
   CausesFormConnectedProps,
   CausesFormDispatchProps,
 } from 'src/components/CausesForm/CausesFormProps';
-import AppAction from 'src/actions/App/AppAction';
-import CausesAction from 'src/actions/Causes/CausesAction';
-import { PostLogRequest } from 'src/apis/CocoaApi/models/Log';
-import { postMoodAndCausesLog } from 'src/actions/App/AppActionCreator';
-import { Cause, GetCausesQuery } from 'src/apis/CocoaApi/models/Causes';
-import {
-  selectCause,
-  getCauses,
-  clearSelectedCauses,
-} from 'src/actions/Causes/CausesActionCreator';
+import AppAction from 'src/actions/Punchlog/PunchlogAction';
+import CausesAction from 'src/actions/Cause/CausesAction';
+import { selectCause, getCauses, clearSelectedCauses } from 'src/actions/Cause/CausesActionCreator';
 import CausesForm from 'src/components/CausesForm/CausesForm';
+import { PostPunchlogRequest } from 'src/apis/Puchlog/PostPunchlog';
+import { postPunchlog } from 'src/actions/Punchlog/PunchlogActionCreator';
+import { Cause } from 'src/apis/Cause/Model';
+import { getCausesRequest } from 'src/apis/Cause/GetCausesApi';
 
 const mapStateToProps = (state: RootState): CausesFormConnectedProps => ({
   employeeId: state.user.employeeId,
@@ -26,10 +23,9 @@ const mapStateToProps = (state: RootState): CausesFormConnectedProps => ({
 const mapDispatchToProps = (
   dispatch: Dispatch<AppAction | CausesAction>
 ): CausesFormDispatchProps => ({
-  postMoodAndCausesLogRequest: (body: PostLogRequest) =>
-    dispatch(postMoodAndCausesLog.request(body)),
+  postMoodAndCausesLogRequest: (body: PostPunchlogRequest) => dispatch(postPunchlog.request(body)),
   selectCause: (cause: Cause) => dispatch(selectCause(cause)),
-  getCausesRequest: (query: GetCausesQuery) => dispatch(getCauses.request(query)),
+  getCausesRequest: (params: getCausesRequest) => dispatch(getCauses.request(params)),
   clearSelectedCauses: () => dispatch(clearSelectedCauses()),
 });
 

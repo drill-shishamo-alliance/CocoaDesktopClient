@@ -1,4 +1,4 @@
-import { Cause } from 'src/apis/CocoaApi/models/Causes';
+import { Cause } from 'src/apis/Cause/Model';
 
 type CausesState = {
   lists: Cause[];

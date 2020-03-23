@@ -6,9 +6,10 @@ import {
   MoodsFormConnectedProps,
   MoodsFormDispatchProps,
 } from 'src/components/MoodsForm/MoodsFormProps';
-import { Mood, GetMoodsQuery } from 'src/apis/CocoaApi/models/Moods';
-import { selectMood, getFellings } from 'src/actions/Moods/ActionCreator';
 import MoodsAction from 'src/actions/Moods/Action';
+import { Mood } from 'src/apis/Mood/Model';
+import { selectMood, getMoods } from 'src/actions/Moods/ActionCreator';
+import { GetMoodsRequest } from 'src/apis/Mood/GetMoodsApi';
 
 const mapStateToProps = (state: RootState): MoodsFormConnectedProps => ({
   moods: state.moods.lists,
@@ -16,7 +17,7 @@ const mapStateToProps = (state: RootState): MoodsFormConnectedProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch<MoodsAction>): MoodsFormDispatchProps => ({
   selectMood: (mood: Mood) => dispatch(selectMood(mood)),
-  getMoodsRequest: (query: GetMoodsQuery) => dispatch(getFellings.request(query)),
+  getMoodsRequest: (params: GetMoodsRequest) => dispatch(getMoods.request(params)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoodsForm);

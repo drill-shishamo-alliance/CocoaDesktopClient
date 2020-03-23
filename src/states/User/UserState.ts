@@ -1,6 +1,6 @@
 type UserState = {
-  employeeId: string;
-  departmentId: string;
+  employeeId: number;
+  departmentId: number;
   isLoggedIn: boolean;
 };
 

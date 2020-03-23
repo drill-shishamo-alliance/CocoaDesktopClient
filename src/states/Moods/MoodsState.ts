@@ -1,4 +1,4 @@
-import { Mood } from 'src/apis/CocoaApi/models/Moods';
+import { Mood } from 'src/apis/Mood/Model';
 
 type MoodsState = {
   lists: Mood[];
