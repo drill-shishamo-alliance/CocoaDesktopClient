@@ -2,7 +2,7 @@ import Axios from './Axios';
 
 export type PostPunchlogRequest = {
   employee_id: number;
-  mood_id: number;
+  mood_id: string;
   cause_ids: number[];
 };
 

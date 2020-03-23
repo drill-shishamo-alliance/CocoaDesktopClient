@@ -9,7 +9,6 @@ export function* postPunchlogSaga(action: ReturnType<typeof postPunchlog.request
       postPunchlogApi,
       action.payload
     );
-
     if (response.status === 201) {
       yield put(postPunchlog.success());
     } else if (response.status === 400) {

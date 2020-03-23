@@ -1,5 +1,5 @@
 export type Mood = {
-  id: number;
+  id: string;
   department_id: number;
   name: string;
   weight: number;
